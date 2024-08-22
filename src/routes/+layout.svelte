@@ -1,6 +1,6 @@
 <script>
     import "../app.css";
-    import { Analytics } from "@vercel/analytics/react"
+    import { inject } from '@vercel/analytics'
   </script>
   
   <slot />
