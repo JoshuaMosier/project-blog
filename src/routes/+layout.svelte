@@ -1,6 +1,7 @@
 <script>
   import "../app.css";
-  import { inject } from '@vercel/analytics'
+  import { inject } from '@vercel/analytics';
+  inject();
 </script>
 
 <div class="min-h-screen bg-gray-100">
