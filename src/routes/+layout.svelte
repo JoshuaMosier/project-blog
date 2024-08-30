@@ -4,7 +4,7 @@
   inject();
 </script>
 
-<div class="min-h-screen bg-gray-100">
+<div class="flex flex-col min-h-screen bg-gray-900 text-white">
   <nav class="bg-gray-800 p-4">
     <ul class="flex justify-center space-x-8">
       <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
@@ -13,9 +13,7 @@
     </ul>
   </nav>
 
-  <div class="min-h-screen bg-gray-900 text-white">
-    <main class="container mx-auto px-4 py-8 max-w-2xl ">
-      <slot />
-    </main>
-  </div>
+  <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+    <slot />
+  </main>
 </div>

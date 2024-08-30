@@ -1,4 +1,6 @@
 <script>
+    import ProjectCabinet from '../components/ProjectCabinet.svelte';
+    
     // Sample project data - replace with your actual data
     const projectsByYear = {
       2023: [
@@ -43,20 +45,28 @@
     }, {});
 </script>
 
-<h1 class="text-5xl font-bold mb-8 text-purple-300">Posts</h1>
+<div class="flex">
+  <div class="w-1/2 pr-8">
+    <h1 class="text-5xl font-bold mb-8 text-purple-300">Posts</h1>
 
-<section>
-  {#each Object.entries(sortedProjectsByYear).sort((a, b) => b[0] - a[0]) as [year, projects]}
-    <div class="mb-8">
-      <h2 class="text-3xl font-bold mb-4 text-gray-400">{year}</h2>
-      <ul class="space-y-2">
-        {#each projects as project}
-          <li class="flex justify-between items-baseline">
-            <a href="#" class="text-blue-300 hover:text-blue-400 text-lg">{project.title}</a>
-            <span class="text-gray-500">{project.date}</span>
-          </li>
-        {/each}
-      </ul>
-    </div>
-  {/each}
-</section>
+    <section>
+      {#each Object.entries(sortedProjectsByYear).sort((a, b) => b[0] - a[0]) as [year, projects]}
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold mb-4 text-gray-400">{year}</h2>
+          <ul class="space-y-2">
+            {#each projects as project}
+              <li class="flex justify-between items-baseline">
+                <a href="#" class="text-blue-300 hover:text-blue-400 text-lg">{project.title}</a>
+                <span class="text-gray-500">{project.date}</span>
+              </li>
+            {/each}
+          </ul>
+        </div>
+      {/each}
+    </section>
+  </div>
+
+  <div class="w-1/2">
+    <ProjectCabinet projects={allProjects} />
+  </div>
+</div>
