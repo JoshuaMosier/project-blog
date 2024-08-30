@@ -1,11 +1,14 @@
 <script>
-    import { onMount } from 'svelte';
+    import { onMount, createEventDispatcher } from 'svelte';
     import * as THREE from 'three';
+    import { gsap } from 'gsap';
 
     export let projects = [];
 
+    const dispatch = createEventDispatcher();
     let container;
     let scene, camera, renderer, planes = [];
+    let raycaster, mouse;
 
     // Configurable parameters
     const VISIBLE_PLANES = 10;
@@ -13,21 +16,25 @@
     const PLANE_HEIGHT = 3;
     const PLANE_SPACING = 1.5;
     const PLANE_VERTICAL_OFFSET = 0.5; // Constant vertical offset for all planes
-    const CAMERA_POSITION = { x: 2, y: 3, z: 5 };
+    const CAMERA_POSITION = { x: 3, y: 3, z: 5 };
     const CAMERA_LOOK_AT = { x: 0, y: 0, z: 0 };
-    const FOG_NEAR = 5;
+    const FOG_NEAR = 1;
     const FOG_FAR = 15;
     const SCROLL_SPEED = 0.01;
 
     // Calculate total loop length
     const LOOP_LENGTH = VISIBLE_PLANES * PLANE_SPACING;
 
+    let currentIndex = 0;
+
     onMount(() => {
         initScene();
         animate();
+        window.addEventListener('resize', onWindowResize);
 
         return () => {
             renderer.dispose();
+            window.removeEventListener('resize', onWindowResize);
         };
     });
 
@@ -42,16 +49,22 @@
         scene.fog = new THREE.Fog(0x000000, FOG_NEAR, FOG_FAR);
 
         // Create planes
-        const texture = new THREE.TextureLoader().load('/placeholder.jpg');
-        for (let i = 0; i < VISIBLE_PLANES; i++) {
+        projects.forEach((project, index) => {
+            const texture = new THREE.TextureLoader().load(`/projects/${project.imageFilename}`);
             const geometry = new THREE.PlaneGeometry(PLANE_WIDTH, PLANE_HEIGHT);
             const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
             const plane = new THREE.Mesh(geometry, material);
-            plane.position.z = -i * PLANE_SPACING;
+            plane.position.z = index * PLANE_SPACING;  // Reversed order
             plane.position.y = PLANE_VERTICAL_OFFSET; // Set constant vertical offset
+            plane.userData.project = project;
+            plane.userData.index = index;
             planes.push(plane);
             scene.add(plane);
-        }
+        });
+
+        // Initialize raycaster and mouse
+        raycaster = new THREE.Raycaster();
+        mouse = new THREE.Vector2();
 
         // Set camera position and orientation
         camera.position.set(CAMERA_POSITION.x, CAMERA_POSITION.y, CAMERA_POSITION.z);
@@ -63,25 +76,44 @@
         renderer.render(scene, camera);
     }
 
-    function handleScroll(event) {
-        const delta = event.deltaY * SCROLL_SPEED;
-        planes.forEach((plane) => {
-            plane.position.z += delta;
-            
-            // Wrap around logic
-            if (plane.position.z > 0) {
-                plane.position.z -= LOOP_LENGTH;
-            } else if (plane.position.z <= -LOOP_LENGTH) {
-                plane.position.z += LOOP_LENGTH;
-            }
+    function onWindowResize() {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    }
 
-            // Update opacity based on position
-            plane.material.opacity = 1 - Math.abs(plane.position.z) / FOG_FAR;
+    function moveCabinetTo(index) {
+        const targetZ = index * PLANE_SPACING;  // Reversed direction
+        gsap.to(scene.position, {
+            z: -targetZ,  // Negative to move towards the camera
+            duration: 0.5,
+            ease: "power2.out",
+            onUpdate: () => {
+                // Wrap planes around to create infinite loop effect
+                planes.forEach((plane) => {
+                    if (plane.position.z + scene.position.z < -PLANE_SPACING) {
+                        plane.position.z += LOOP_LENGTH;
+                    } else if (plane.position.z + scene.position.z > LOOP_LENGTH - PLANE_SPACING) {
+                        plane.position.z -= LOOP_LENGTH;
+                    }
+                });
+            },
+            onComplete: () => {
+                currentIndex = index;
+                dispatch('projectFocus', projects[index]);
+            }
         });
+    }
+
+    export function focusProject(project) {
+        const index = projects.findIndex(p => p === project);
+        if (index !== -1) {
+            moveCabinetTo(index);
+        }
     }
 </script>
 
-<div bind:this={container} on:wheel={handleScroll} class="w-full h-full"></div>
+<div bind:this={container} class="w-full h-full"></div>
 
 <style>
     div {
