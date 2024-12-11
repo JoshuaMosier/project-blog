@@ -51,7 +51,12 @@ export const posts = Object.entries(postFiles)
             path: postBasePath
         };
     })
-    .filter(post => post !== null);
+    .filter(post => post !== null)
+    .sort((a, b) => {
+        const dateA = new Date(`${a.date.split('T')[0]}T12:00:00-05:00`);
+        const dateB = new Date(`${b.date.split('T')[0]}T12:00:00-05:00`);
+        return dateB - dateA;
+    });
 
 export function getPost(slug) {
     return posts.find(post => post.id === slug);

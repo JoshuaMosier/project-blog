@@ -1,15 +1,56 @@
 ---
-title: Building a Nutrient Analysis Platform
-date: 2021-10-20
-image: ./2021_Oct-20_nutricient.png
+title: Nutricient - Optimizing Dining Hall Nutrition
+date: 2020-02-15
+image: ./nutricient.png
 ---
 
-Developed a data visualization tool for analyzing nutrient content across different food groups. The platform helps users understand their dietary intake patterns.
+A web application that optimizes meal choices in Virginia Tech dining halls using linear programming to help students maintain balanced nutrition while meeting their dietary goals.
 
-![Nutrient Analysis Interface](./2021_Oct-20_nutricient.png)
+## The Problem
 
-Features include:
-- Interactive nutrient breakdown charts
-- Daily intake tracking
-- Meal planning optimization
-- Dietary recommendation engine
+Many college students struggle to maintain a balanced diet while eating in dining halls. Whether trying to meet specific fitness goals, manage allergies, or simply eat healthily, it can be overwhelming to analyze nutritional information for every meal option. My brother's quest to maximize protein intake while maintaining balanced nutrition inspired me to tackle this challenge at scale.
+
+## The Solution
+
+Nutricient is a web application that:
+- Automatically scrapes nutritional data from VT dining halls
+- Takes user inputs for:
+  - Metabolic information
+  - Dietary restrictions and allergies
+  - Preferred dining locations
+  - Target nutrient goals
+- Uses linear optimization (PuLP) to calculate ideal meal combinations
+- Minimizes calories while meeting nutritional targets
+- Allows users to iteratively refine results by excluding unwanted items
+
+## Technical Implementation
+
+The application stack includes:
+- Python/Flask backend deployed on Google App Engine
+- Bootstrap-based single-page application frontend
+- Automated data collection using Google Cloud Functions and Cloud Scheduler
+- Data storage in Google Cloud Storage buckets
+- PuLP library for linear optimization calculations
+
+## Key Challenges
+
+The biggest hurdles came from working with Google Cloud Platform:
+- Setting up reliable cron jobs for data collection
+- Managing cloud function deployments
+- Configuring storage buckets efficiently
+- Domain routing and DNS configuration
+
+## Future Developments
+
+The project has several planned expansions:
+- Including on-campus restaurant nutritional data
+- Adding local grocery store options
+- Incorporating complete meal recipes
+- Improving edge case handling and form validation
+- Enhanced UI/UX improvements
+
+This project demonstrates how mathematical optimization can be applied to everyday problems, making it easier for students to maintain healthy eating habits while navigating campus dining options.
+
+[View the project on Devpost →](https://devpost.com/software/nutricient)
+
+*This project won 3rd place at VTHacks 7.*

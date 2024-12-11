@@ -2,7 +2,6 @@
     // These props will be populated from the markdown frontmatter
     export let title;
     export let date;
-    export let image = null; // Make image optional
 </script>
 
 <article class="prose prose-invert mx-auto">
@@ -18,13 +17,6 @@
                 })}
             </time>
         {/if}
-        {#if image}
-            <img 
-                src={image} 
-                alt={title}
-                class="mt-4 w-full max-h-96 object-cover rounded-lg"
-            />
-        {/if}
     </header>
     
     <div class="markdown-content">
@@ -34,7 +26,7 @@
 
 <style>
     :global(.prose) {
-        max-width: 65ch;
+        max-width: 85ch;
         color: #fff;
     }
     
