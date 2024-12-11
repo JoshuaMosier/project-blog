@@ -1,17 +1,17 @@
 ---
 title: Nutricient - Optimizing Dining Hall Nutrition
-date: 2020-02-15
+date: 2021-03-28
 image: ./nutricient.png
 ---
 
 <div class="flex flex-col items-center w-full my-8">
     <img 
-        src="/posts/cinetrics/cinetrics.png" 
+        src="/posts/nutricient/nutricient.png" 
         alt="Cinetrics Dashboard" 
         class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
     />
     <a 
-        href="https://devpost.com/software/cinetrics" 
+        href="https://devpost.com/software/nutricient" 
         class="mt-2 text-sm text-blue-300 hover:text-blue-400 italic"
         target="_blank" 
         rel="noopener noreferrer"
