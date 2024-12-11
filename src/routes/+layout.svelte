@@ -1,20 +1,31 @@
 <script>
   import "../app.css";
   import { inject } from '@vercel/analytics';
+  import SocialIcons from "$lib/components/SocialIcons.svelte";
   inject();
 </script>
 
-<div class="flex flex-col min-h-screen bg-gray-900 text-white">
+<div class="min-h-screen flex flex-col bg-gray-900 text-white">
   <nav class="bg-gray-800 p-4">
-    <ul class="flex justify-center space-x-8">
-      <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-      <li><a href="/gallery" class="text-white hover:text-gray-300">Gallery</a></li>
-      <li><a href="/about" class="text-white hover:text-gray-300">About</a></li>
-      <li><a href="/contact" class="text-white hover:text-gray-300">Contact</a></li>
-    </ul>
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="w-32">
+        <!-- Left spacer to help with centering -->
+      </div>
+      
+      <ul class="flex space-x-8">
+        <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+        <li><a href="/gallery" class="text-white hover:text-gray-300">Gallery</a></li>
+        <li><a href="/about" class="text-white hover:text-gray-300">About</a></li>
+        <li><a href="/resume" class="text-white hover:text-gray-300">Resume</a></li>
+      </ul>
+
+      <div class="w-32 flex justify-end">
+        <SocialIcons />
+      </div>
+    </div>
   </nav>
 
-  <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
+  <main class="flex-grow container mx-auto px-4 py-8">
     <slot />
   </main>
 </div>
