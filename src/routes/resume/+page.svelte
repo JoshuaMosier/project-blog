@@ -1,17 +1,6 @@
-<div class="max-w-6xl mx-auto">
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-5xl font-bold mb-8 text-purple-300">Resume</h1>
-    </div>
-
-    <div class="w-full h-[800px] bg-gray-800 rounded-lg overflow-hidden">
-        <iframe
-            src="/jmosier-resume.pdf"
-            class="w-full h-full"
-            title="Resume"
-        ></iframe>
-    </div>
-
-    <div class="mt-4 text-center">
+<div class="max-w-8xl mx-auto">
+    <div class="max-w-4xl mx-auto flex justify-between items-end mb-8">
+        <h1 class="text-5xl font-bold text-purple-300 m-0">Resume</h1>
         <a 
             href="/jmosier-resume.pdf" 
             download
@@ -19,5 +8,13 @@
         >
             Download PDF
         </a>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <embed
+            src="/jmosier-resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+            type="application/pdf"
+            class="w-full h-screen rounded-lg border-0"
+        />
     </div>
 </div>
