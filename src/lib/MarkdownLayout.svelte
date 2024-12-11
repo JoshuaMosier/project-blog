@@ -10,10 +10,11 @@
         <h1 class="text-4xl font-bold mb-2">{title}</h1>
         {#if date}
             <time class="text-gray-400">
-                {new Date(date).toLocaleDateString('en-US', {
+                {new Date(`${date.split('T')[0]}T12:00:00Z`).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
-                    day: 'numeric'
+                    day: 'numeric',
+                    timeZone: 'America/New_York'
                 })}
             </time>
         {/if}
