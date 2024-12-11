@@ -12,7 +12,7 @@
                     <img 
                         src={post.image} 
                         alt={post.title}
-                        class="w-full h-48 object-cover rounded-lg"
+                        class="w-full h-48 object-contain rounded-lg bg-gray-800"
                     />
                     <p class="mt-2 text-sm text-gray-400">{post.title}</p>
                 {:else}

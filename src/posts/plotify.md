@@ -4,6 +4,22 @@ date: 2020-01-01
 image: ./plotify.png
 ---
 
+<div class="flex flex-col items-center w-full my-8">
+    <img 
+        src="/posts/plotify/plotify.png" 
+        alt="plotify Dashboard" 
+        class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
+    />
+    <a 
+        href="https://devpost.com/software/plotify" 
+        class="mt-2 text-sm text-blue-300 hover:text-blue-400 italic"
+        target="_blank" 
+        rel="noopener noreferrer"
+    >
+        View project on Devpost →
+    </a>
+</div>
+
 Ever wondered what your music taste really looks like? While Spotify Wrapped gives us a yearly glimpse into our listening habits, I wanted to create something that could provide deeper insights at any time. Enter Plotify: a web application that transforms your Spotify data into meaningful visualizations.
 
 <div class="video-container">

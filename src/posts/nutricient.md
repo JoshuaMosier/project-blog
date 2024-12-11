@@ -4,6 +4,22 @@ date: 2020-02-15
 image: ./nutricient.png
 ---
 
+<div class="flex flex-col items-center w-full my-8">
+    <img 
+        src="/posts/cinetrics/cinetrics.png" 
+        alt="Cinetrics Dashboard" 
+        class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
+    />
+    <a 
+        href="https://devpost.com/software/cinetrics" 
+        class="mt-2 text-sm text-blue-300 hover:text-blue-400 italic"
+        target="_blank" 
+        rel="noopener noreferrer"
+    >
+        View project on Devpost →
+    </a>
+</div>
+
 A web application that optimizes meal choices in Virginia Tech dining halls using linear programming to help students maintain balanced nutrition while meeting their dietary goals.
 
 ## The Problem

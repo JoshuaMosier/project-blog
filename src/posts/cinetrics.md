@@ -1,7 +1,24 @@
 ---
 title: Cinetrics - Your Personal Movie Critic Matchmaker
 date: 2021-02-27
+image: ./cinetrics.png
 ---
+
+<div class="flex flex-col items-center w-full my-8">
+    <img 
+        src="/posts/cinetrics/cinetrics.png" 
+        alt="Cinetrics Dashboard" 
+        class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
+    />
+    <a 
+        href="https://devpost.com/software/cinetrics" 
+        class="mt-2 text-sm text-blue-300 hover:text-blue-400 italic"
+        target="_blank" 
+        rel="noopener noreferrer"
+    >
+        View project on Devpost →
+    </a>
+</div>
 
 Ever spend more time scrolling through Netflix than actually watching something? We built Cinetrics to solve this common dilemma by matching you with film critics who share your taste in movies.
 
@@ -37,7 +54,5 @@ We're working on implementing machine learning capabilities to:
 - Predict critic ratings for unreviewed movies
 - Generate realistic movie ratings based on review history
 - Reduce the number of user ratings needed for accurate matching
-
-[View the project on Devpost →](https://devpost.com/software/cinetrics)
 
 *This project won the MLH Best Use of CockroachDB award at VTHacks 8.*
