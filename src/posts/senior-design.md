@@ -1,15 +1,17 @@
 ---
-title: Developing a Smart Haptic Wristband for Robot-Human Communication
+title: Senior Design - Smart Haptic Wristband for Human-Robot Interaction
 date: 2021-09-03
 image: ./senior-design.png
 ---
 
+<script>
+  import ObjViewer from '$lib/components/ObjViewer.svelte';
+</script>
+
 <div class="flex flex-col items-center w-full my-8">  
-    <img  
-        src="/posts/senior-design/senior-design.png"  
-        alt="On Air Smart Status Light"  
-        class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg"  
-    />  
+    <div class="w-full max-w-xl rounded-lg overflow-hidden">
+        <ObjViewer objUrl="/posts/senior-design/haptic.obj" />
+    </div>
     <a  
         href="https://arxiv.org/abs/2109.01747"  
         class="mt-2 text-sm text-blue-300 hover:text-blue-400 italic"  
@@ -20,7 +22,7 @@ image: ./senior-design.png
     </a>  
 </div> 
 
-It started with a fascinating challenge: how do we help robots communicate better with humans? As part of my senior design team at Virginia Tech, we tackled this problem by developing a novel haptic wristband that could bridge the communication gap between robots and their human operators.
+As part of my senior design team at Virginia Tech, we tackled this problem by developing a novel haptic wristband that could bridge the communication gap between robots and their human operators.
 
 ## The Problem
 
@@ -33,8 +35,6 @@ Our solution was a lightweight, wireless haptic wristband that provides two type
 - Six vibrotactors arranged around the wrist that can create directional patterns to guide user input
 
 ## Building the Device
-
-The development process was incredibly rewarding and challenging. Here are some key features we implemented:
 
 ### The Squeeze Mechanism
 One of our biggest innovations was the cord and reel system controlled by a high-torque N20 DC motor. We designed it to provide gentle but noticeable squeeze notifications while keeping the band comfortable during extended wear. The cord is never in direct contact with the wearer's skin, and we normally keep it in a relaxed state.
@@ -64,10 +64,6 @@ This project opened up exciting possibilities for human-robot interaction. Some 
 - Incorporating additional sensors for context-aware feedback
 - Developing specialized versions for different industrial or assistive robotics applications
 - Exploring applications beyond robotics in areas like VR/AR interaction
-
-## Impact
-
-Our wristband represents a step forward in making human-robot interaction more natural and efficient. It demonstrates how thoughtful hardware design can help bridge the gap between humans and robots, making collaborative tasks more intuitive and productive.
 
 ---
 

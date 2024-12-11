@@ -11,6 +11,11 @@ const config = {
 			extensions: ['.md'],
 			layout: {
 				_: 'src/lib/MarkdownLayout.svelte'
+			},
+			remarkPlugins: [],
+			rehypePlugins: [],
+			smartypants: {
+				dashes: 'oldschool'
 			}
 		})
 	],

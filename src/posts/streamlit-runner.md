@@ -1,6 +1,6 @@
 ---
 title: Streamlit Runner - A Simple VS Code Extension
-date: 2024-01-15
+date: 2024-12-10
 image: ./streamlit-runner.png
 ---
 

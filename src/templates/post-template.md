@@ -1,5 +1,5 @@
 ---
-title: Project Title Here
+title: "Project Title Here"
 date: YYYY-MM-DD
 image: ./project-image.png
 ---
