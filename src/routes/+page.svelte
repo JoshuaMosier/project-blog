@@ -3,7 +3,7 @@
     const postsByYear = getPostsByYear();
 </script>
 
-<div class="max-w-2xl mx-auto">
+<div class="max-w-4xl mx-auto">
     <h1 class="text-5xl font-bold mb-8 text-purple-300">Posts</h1>
 
     <section>
