@@ -19,7 +19,7 @@
         {/if}
     </header>
     
-    <div class="markdown-content">
+    <div class="markdown-content max-w-2xl mx-auto">
         <slot />
     </div>
 </article>

@@ -13,7 +13,7 @@
     </article>
     
     <!-- Table of Contents positioned with sticky positioning -->
-    <div class="fixed top-24 right-[calc(40%+33rem)] w-64">
+    <div class="fixed top-60 right-[calc(40%+33rem)] w-64">
         <TableOfContents />
     </div>
 </div>

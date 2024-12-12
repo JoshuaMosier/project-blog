@@ -13,9 +13,14 @@
       const scrollTop = window.scrollY;
       const articleTop = article.offsetTop;
       
-      // Calculate progress relative to the article
-      const readingProgress = (scrollTop - articleTop) / (articleHeight - windowHeight);
-      progress = Math.max(0, Math.min(100, readingProgress * 100));
+      // Calculate total scrollable distance
+      const scrollableDistance = articleHeight - windowHeight;
+      
+      // Calculate current scroll position relative to the article
+      const currentScroll = scrollTop - articleTop;
+      
+      // Calculate progress percentage, ensuring we reach 100% at the bottom
+      progress = Math.max(0, Math.min(100, (currentScroll / scrollableDistance) * 100));
     };
     
     window.addEventListener('scroll', updateProgress);

@@ -47,11 +47,28 @@
     
     return () => observer.disconnect();
   });
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 </script>
 
 <nav class="hidden lg:block sticky top-12 max-h-[calc(100vh-8rem)] overflow-y-auto -ml-12">
   <h4 class="text-sm font-semibold mb-4 text-gray-400">Table of Contents</h4>
   <ul class="space-y-2">
+    <!-- Add Top link as first element -->
+    <li>
+      <button 
+        class="text-sm hover:text-purple-300 transition-colors block py-1 text-gray-400 text-left w-full"
+        on:click={scrollToTop}
+      >
+        Back to top
+      </button>
+    </li>
+
     {#each headings as heading}
       <li class="pl-{(heading.level - 2) * 4}">
         <a 
