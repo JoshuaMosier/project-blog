@@ -17,7 +17,8 @@ const config = {
 			rehypePlugins: [rehypePrism],
 			smartypants: {
 				dashes: 'oldschool'
-			}
+			},
+			preserve: ['html']
 		})
 	],
 	kit: {

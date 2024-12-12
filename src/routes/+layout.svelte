@@ -2,6 +2,7 @@
   import "../app.css";
   import { inject } from '@vercel/analytics';
   import SocialIcons from "$lib/components/SocialIcons.svelte";
+  import Search from "$lib/components/Search.svelte";
   inject();
   export let data;
 </script>
@@ -18,9 +19,9 @@
 
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
   <nav class="sticky top-0 z-50 bg-gray-800/90 backdrop-blur-sm border-b border-gray-700">
-    <div class="max-w-4xl mx-auto flex items-center justify-between p-4">
-      <div class="w-32">
-        <!-- Left spacer to help with centering -->
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <div class="w-64 flex">
+        <SocialIcons />
       </div>
       
       <ul class="flex space-x-8">
@@ -30,8 +31,8 @@
         <li><a href="/resume" class="text-white hover:text-gray-300">Résumé</a></li>
       </ul>
 
-      <div class="w-32 flex justify-end">
-        <SocialIcons />
+      <div class="w-64">
+        <Search />
       </div>
     </div>
   </nav>
