@@ -6,8 +6,8 @@
 </script>
 
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
-  <nav class="bg-gray-800 p-4">
-    <div class="max-w-4xl mx-auto flex items-center justify-between">
+  <nav class="sticky top-0 z-50 bg-gray-800/90 backdrop-blur-sm border-b border-gray-700">
+    <div class="max-w-4xl mx-auto flex items-center justify-between p-4">
       <div class="w-32">
         <!-- Left spacer to help with centering -->
       </div>

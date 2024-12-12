@@ -4,7 +4,7 @@
     export let date;
 </script>
 
-<article class="prose prose-invert mx-auto">
+<article class="prose prose-invert max-w-4xl mx-auto">
     <header class="mb-8">
         <h1 class="text-4xl font-bold mb-2">{title}</h1>
         {#if date}
@@ -26,7 +26,6 @@
 
 <style>
     :global(.prose) {
-        max-width: 85ch;
         color: #fff;
     }
     
@@ -37,4 +36,5 @@
     :global(.prose a:hover) {
         color: #60a5fa; /* text-blue-400 */
     }
+    
 </style> 
