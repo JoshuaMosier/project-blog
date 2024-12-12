@@ -1,6 +1,7 @@
 import adapter from '@sveltejs/adapter-auto';
 import { mdsvex } from 'mdsvex';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import rehypePrism from 'rehype-prism-plus';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,7 +14,7 @@ const config = {
 				_: 'src/lib/MarkdownLayout.svelte'
 			},
 			remarkPlugins: [],
-			rehypePlugins: [],
+			rehypePlugins: [rehypePrism],
 			smartypants: {
 				dashes: 'oldschool'
 			}
