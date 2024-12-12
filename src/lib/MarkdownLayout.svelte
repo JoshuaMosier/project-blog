@@ -83,7 +83,7 @@
             {#if nextPost}
                 <a 
                     href={nextPost.path}
-                    class="group flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors"
+                    class="group flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors no-underline"
                 >
                     <span class="mr-3 text-gray-400 group-hover:text-purple-300">←</span>
                     <div class="flex flex-col">

@@ -83,7 +83,7 @@
                                     {/if}
                                 </div>
                             </div>
-                            <span class="text-gray-500">{post.displayDate}</span>
+                            <span class="hidden sm:inline text-gray-500">{post.displayDate}</span>
                         </li>
                     {/each}
                 </ul>
