@@ -3,6 +3,7 @@
   import { inject } from '@vercel/analytics';
   import SocialIcons from "$lib/components/SocialIcons.svelte";
   import Search from "$lib/components/Search.svelte";
+  import { page } from '$app/stores';
   inject();
   export let data;
 </script>
@@ -19,16 +20,48 @@
 
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
   <nav class="sticky top-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700">
-    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-      <div class="w-64 flex">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="w-64">
         <SocialIcons />
       </div>
       
       <ul class="flex space-x-8">
-        <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-        <li><a href="/gallery" class="text-white hover:text-gray-300">Gallery</a></li>
-        <li><a href="/about" class="text-white hover:text-gray-300">About</a></li>
-        <li><a href="/resume" class="text-white hover:text-gray-300">Résumé</a></li>
+        <li>
+          <a 
+            href="/" 
+            class="relative text-white group py-2 {$page.url.pathname === '/' ? 'active' : ''}"
+          >
+            Home
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/gallery" 
+            class="relative text-white group py-2 {$page.url.pathname === '/gallery' ? 'active' : ''}"
+          >
+            Gallery
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/about" 
+            class="relative text-white group py-2 {$page.url.pathname === '/about' ? 'active' : ''}"
+          >
+            About
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/resume" 
+            class="relative text-white group py-2 {$page.url.pathname === '/resume' ? 'active' : ''}"
+          >
+            Résumé
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
+          </a>
+        </li>
       </ul>
 
       <div class="w-64">
