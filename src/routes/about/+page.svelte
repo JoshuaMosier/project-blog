@@ -4,15 +4,13 @@
     <section class="prose prose-invert prose-lg max-w-none">
         <p class="text-lg leading-relaxed mb-6">
             Hi there! I'm Josh Mosier, a software developer and mechanical engineering graduate who enjoys collecting skills 
-            and making stuff I think is neat. I combine software expertise with hands-on engineering to create unique solutions 
-            to challenging problems.
+            and making stuff I think is neat.
         </p>
 
         <h2 class="text-3xl font-semibold mb-4 text-purple-200">Making & Creating</h2>
         <p class="mb-6">
             My engineering background drives me to build both digital and physical projects. I enjoy exploring new technologies 
             and techniques, whether that's 3D printing custom parts, designing electronics, or experimenting with metal casting. 
-            I believe in learning by doing and love taking on projects that combine multiple disciplines.
         </p>
 
         <h2 class="text-3xl font-semibold mb-4 text-purple-200">Let's Connect</h2>

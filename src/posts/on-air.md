@@ -2,6 +2,7 @@
 title: On Air - Building a Smart Status Light to Stay Focused
 date: 2020-12-21 
 image: ./on-air.png
+categories: ["software", "electronics"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">  

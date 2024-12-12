@@ -2,6 +2,7 @@
 title: Nutricient - Optimizing Dining Hall Nutrition
 date: 2021-03-28
 image: ./nutricient.png
+categories: ["software"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

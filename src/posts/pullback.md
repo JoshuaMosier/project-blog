@@ -2,6 +2,7 @@
 title: Building a 3D Printed Pullback Car Mechanism
 date: 2021-05-04
 image: ./pullback.png
+categories: ["3d-printing"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

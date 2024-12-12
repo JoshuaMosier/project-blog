@@ -2,6 +2,7 @@
 title: Cinetrics - Your Personal Movie Critic Matchmaker
 date: 2021-02-27
 image: ./cinetrics.png
+categories: ["software"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

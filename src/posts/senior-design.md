@@ -2,6 +2,7 @@
 title: Senior Design - Smart Haptic Wristband for Human-Robot Interaction
 date: 2021-09-03
 image: ./senior-design.png
+categories: ["electronics", "3d-printing"]
 ---
 
 <script>
