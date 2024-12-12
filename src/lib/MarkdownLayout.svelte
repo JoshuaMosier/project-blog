@@ -22,6 +22,7 @@
 
     import Giscus from '$lib/components/Giscus.svelte';
     import { posts } from '$lib/posts';
+    import Lightbox from '$lib/components/Lightbox.svelte';
 
     // Find current post index
     const currentPostIndex = posts.findIndex(post => post.title === title);
@@ -29,6 +30,30 @@
     // Get previous and next posts
     const previousPost = currentPostIndex < posts.length - 1 ? posts[currentPostIndex + 1] : null;
     const nextPost = currentPostIndex > 0 ? posts[currentPostIndex - 1] : null;
+
+    import { onMount } from 'svelte';
+    
+    onMount(() => {
+        const images = document.querySelectorAll('.prose img:not(.no-lightbox)');
+        images.forEach(img => {
+            // Create wrapper and Lightbox component
+            const wrapper = document.createElement('div');
+            const lightbox = new Lightbox({
+                target: wrapper,
+                props: {
+                    src: img.getAttribute('src'),
+                    alt: img.getAttribute('alt') || ''
+                }
+            });
+
+            // Move the image into the Lightbox slot
+            const slotContainer = wrapper.querySelector('[role="button"]');
+            if (slotContainer) {
+                slotContainer.appendChild(img.cloneNode(true));
+                img.parentNode.replaceChild(wrapper, img);
+            }
+        });
+    });
 </script>
 
 <article class="prose prose-invert max-w-4xl mx-auto">
@@ -148,5 +173,21 @@
     
     :global(.prose img) {
         @apply rounded-lg shadow-lg;
+    }
+    
+    /* Update image styles within markdown content */
+    :global(.prose img:not(.no-lightbox)) {
+        cursor: zoom-in;
+        @apply mx-auto block;
+    }
+    
+    /* Add styles for the lightbox wrapper */
+    :global(.prose .cursor-zoom-in) {
+        @apply flex justify-center;
+    }
+    
+    /* Modify hover effect to only apply when not in lightbox */
+    :global(.prose img:not(.no-lightbox):hover:not([class*="max-w-full"])) {
+        @apply opacity-90 transition-opacity;
     }
 </style> 
