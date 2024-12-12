@@ -10,11 +10,11 @@
         </a>
     </div>
 
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto aspect-[8.5/11]">
         <embed
-            src="/jmosier-resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+            src="/jmosier-resume.pdf#zoom=100&navpanes=0&scrollbar=0"
             type="application/pdf"
-            class="w-full h-screen rounded-lg border-0"
+            class="w-full h-full rounded-lg border-0"
         />
     </div>
 </div>
