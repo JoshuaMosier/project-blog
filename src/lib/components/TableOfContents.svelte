@@ -84,7 +84,7 @@
           on:click|preventDefault={(e) => {
             const element = document.getElementById(heading.id);
             if (element) {
-              const offset = 80;
+              const offset = 100;
               const elementPosition = element.getBoundingClientRect().top;
               const offsetPosition = elementPosition + window.pageYOffset - offset;
               window.scrollTo({

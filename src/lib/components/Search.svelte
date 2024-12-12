@@ -44,7 +44,6 @@
 
     // Debounced search function
     async function performSearch() {
-        console.log('Performing search for:', searchQuery);
         
         if (searchQuery.length < 2) {
             searchResults = [];
@@ -53,7 +52,6 @@
         }
 
         const query = searchQuery.toLowerCase();
-        console.log('Normalized query:', query);
 
         // Search in titles and pre-processed content
         searchResults = posts
@@ -68,13 +66,11 @@
             }))
             .slice(0, 5);
         
-        console.log('Final search results:', searchResults);
         showResults = true;
     }
 
     // Debounced search handler
     $: {
-        console.log('Search query changed:', searchQuery);
         if (searchTimeout) clearTimeout(searchTimeout);
         searchTimeout = setTimeout(performSearch, 300);
     }

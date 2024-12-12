@@ -3,9 +3,11 @@
     export let alt = '';
     let isOpen = false;
 
-    function handleKeydown(event) {
+    function handleKey(event) {
         if (event.key === 'Escape') {
             isOpen = false;
+        } else if ((event.key === 'Enter' || event.key === ' ') && !isOpen) {
+            isOpen = true;
         }
     }
 
@@ -14,20 +16,14 @@
             isOpen = false;
         }
     }
-
-    function handleKeypress(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            isOpen = true;
-        }
-    }
 </script>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKey} />
 
 <div 
     class="cursor-zoom-in" 
     on:click={() => isOpen = true}
-    on:keypress={handleKeypress}
+    on:keypress={handleKey}
     role="button"
     tabindex="0"
 >

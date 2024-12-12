@@ -2,23 +2,10 @@
     // These props will be populated from the markdown frontmatter
     export let title;
     export let date;
-    export let categories = [];  // Add categories prop
+    export let categories = [];
 
-    // Define categories with their styling (same as in landing page)
-    const categoryStyles = {
-        'software': {
-            label: 'Software',
-            class: 'bg-blue-900 text-blue-300'
-        },
-        '3d-printing': {
-            label: '3D Printing',
-            class: 'bg-orange-900 text-orange-300'
-        },
-        'electronics': {
-            label: 'Electronics',
-            class: 'bg-emerald-900 text-emerald-300'
-        }
-    };
+    // Import categories from config
+    import { categories as categoryConfig } from '$lib/config';
 
     import Giscus from '$lib/components/Giscus.svelte';
     import { posts } from '$lib/posts';
@@ -74,9 +61,9 @@
             {#if categories?.length}
                 <div class="flex gap-2">
                     {#each categories as category}
-                        {#if categoryStyles[category]}
-                            <span class="px-2 py-0.5 text-xs rounded {categoryStyles[category].class}">
-                                {categoryStyles[category].label}
+                        {#if categoryConfig[category]}
+                            <span class="px-2 py-0.5 text-xs rounded {categoryConfig[category].activeClass}">
+                                {categoryConfig[category].label}
                             </span>
                         {/if}
                     {/each}
@@ -186,8 +173,8 @@
         @apply flex justify-center;
     }
     
-    /* Modify hover effect to only apply when not in lightbox */
-    :global(.prose img:not(.no-lightbox):hover:not([class*="max-w-full"])) {
+    /* Optional: Add hover effect */
+    :global(.prose img:not(.no-lightbox):hover) {
         @apply opacity-90 transition-opacity;
     }
 </style> 
