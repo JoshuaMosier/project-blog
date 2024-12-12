@@ -30,7 +30,7 @@
   });
 </script>
 
-<div class="fixed top-[56px] left-0 w-full h-0.5 bg-gray-800 z-50">
+<div class="fixed top-[70px] left-0 w-full h-0.5 bg-gray-800 z-50">
   <div 
     class="h-full bg-purple-300 transition-all duration-100 ease-out" 
     style:width="{progress}%"

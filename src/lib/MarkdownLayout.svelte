@@ -19,6 +19,8 @@
             class: 'bg-emerald-900 text-emerald-300'
         }
     };
+
+    import Giscus from '$lib/components/Giscus.svelte';
 </script>
 
 <article class="prose prose-invert max-w-4xl mx-auto">
@@ -53,6 +55,13 @@
     <div class="markdown-content max-w-2xl mx-auto">
         <slot />
     </div>
+    
+    <Giscus 
+        repo="JoshuaMosier/project-blog"
+        repoId="R_kgDOMnDwhg"
+        category="General"
+        categoryId="DIC_kwDOMnDwhs4ClJQd"
+    />
 </article>
 
 <style>

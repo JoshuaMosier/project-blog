@@ -18,7 +18,7 @@
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
-  <nav class="sticky top-0 z-50 bg-gray-800/90 backdrop-blur-sm border-b border-gray-700">
+  <nav class="sticky top-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700">
     <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
       <div class="w-64 flex">
         <SocialIcons />

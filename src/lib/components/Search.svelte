@@ -135,9 +135,6 @@
                                         {result.snippet.afterMatch}{result.snippet.suffix}
                                     </div>
                                 {/if}
-                                {#if result.displayDate}
-                                    <div class="text-xs text-gray-400 mt-1">{result.displayDate}</div>
-                                {/if}
                             </button>
                         </li>
                     {/each}
