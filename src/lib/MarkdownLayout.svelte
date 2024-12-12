@@ -165,16 +165,12 @@
     /* Update image styles within markdown content */
     :global(.prose img:not(.no-lightbox)) {
         cursor: zoom-in;
-        @apply mx-auto block;
+        @apply mx-auto block w-[400px] max-w-full;
     }
     
-    /* Add styles for the lightbox wrapper */
-    :global(.prose .cursor-zoom-in) {
-        @apply flex justify-center;
-    }
-    
-    /* Optional: Add hover effect */
-    :global(.prose img:not(.no-lightbox):hover) {
-        @apply opacity-90 transition-opacity;
+    /* Add styles specifically for images inside the lightbox */
+    :global(.lightbox-image) {
+        width: auto !important;
+        max-width: none !important;
     }
 </style> 

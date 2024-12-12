@@ -36,12 +36,18 @@
         on:click={handleBackdropClick}
         role="presentation"
     >
-        <div class="relative max-w-[90vw] max-h-[90vh]">
-            <img 
-                {src} 
-                {alt} 
-                class="max-w-full max-h-[90vh] object-contain"
-            />
+        <div class="relative">
+            <button 
+                class="w-auto h-auto max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-0"
+                on:click={() => isOpen = false}
+                aria-label="Close lightbox"
+            >
+                <img 
+                    {src} 
+                    {alt} 
+                    class="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain cursor-zoom-out lightbox-image"
+                />
+            </button>
             <button
                 class="absolute -top-2 -right-2 text-white/70 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-2"
                 on:click={() => isOpen = false}
