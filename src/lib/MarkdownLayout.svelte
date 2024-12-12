@@ -167,7 +167,6 @@
     
     /* Update image styles within markdown content */
     :global(.prose img:not(.no-lightbox)) {
-        cursor: zoom-in;
         @apply mx-auto block w-[400px] max-w-full;
     }
     
