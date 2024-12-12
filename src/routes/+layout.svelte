@@ -6,6 +6,11 @@
   import { page } from '$app/stores';
   inject();
   export let data;
+  let isMenuOpen = false;
+  
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+  }
 </script>
 
 <svelte:head>
@@ -21,11 +26,26 @@
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
   <nav class="sticky top-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700">
     <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
-      <div class="w-64">
+      <div class="w-auto md:w-64">
         <SocialIcons />
       </div>
       
-      <ul class="flex space-x-8">
+      <button 
+        class="md:hidden p-2"
+        on:click={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+          />
+        </svg>
+      </button>
+
+      <ul class="{isMenuOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-full left-0 right-0 md:top-auto flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 bg-gray-800/95 md:bg-transparent p-4 md:p-0">
         <li>
           <a 
             href="/" 
@@ -64,7 +84,7 @@
         </li>
       </ul>
 
-      <div class="w-64">
+      <div class="hidden md:block w-64">
         <Search />
       </div>
     </div>

@@ -28,3 +28,11 @@ h1, h2, h3, h4, h5, h6 {
 .active {
   @apply text-blue-500;
 }
+
+.prose h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom-width: 1px;
+    border-color: rgb(55 65 81);
+}

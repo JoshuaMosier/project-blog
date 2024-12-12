@@ -45,11 +45,11 @@
 </script>
 
 <div class="max-w-4xl mx-auto">
-    <div class="flex justify-between items-center mb-8">
-        <h1 class="text-5xl font-bold text-purple-300">Posts</h1>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-8">
+        <h1 class="text-4xl sm:text-5xl font-bold text-purple-300">Posts</h1>
 
         <!-- Filter controls -->
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
             <span class="text-sm text-gray-400 mr-2">
                 Filter:
             </span>
@@ -101,7 +101,7 @@
                                     {/if}
                                 </div>
                             </div>
-                            <span class="text-gray-500">{post.displayDate}</span>
+                            <span class="hidden sm:inline text-gray-500">{post.displayDate}</span>
                         </li>
                     {/each}
                 </ul>
