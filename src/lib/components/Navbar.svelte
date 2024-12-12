@@ -64,7 +64,7 @@
           href="/resume" 
           class="relative text-white group py-2 {$page.url.pathname === '/resume' ? 'active' : ''}"
         >
-          Résumé
+          Resume
           <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
         </a>
       </li>
