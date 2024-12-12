@@ -10,7 +10,6 @@
     let searchResults = [];
     let searchInput;
     let searchTimeout;
-    let contentCache = new Map();
 
     // Add helper function to get context snippet
     function getContextSnippet(content, query, snippetLength = 50) {
@@ -44,7 +43,6 @@
 
     // Debounced search function
     async function performSearch() {
-        
         if (searchQuery.length < 2) {
             searchResults = [];
             showResults = false;
@@ -52,14 +50,13 @@
         }
 
         const query = searchQuery.toLowerCase();
+        const filteredPosts = posts.filter(post => {
+            const titleMatch = post.title.toLowerCase().includes(query);
+            const contentMatch = postContent[post.id]?.toLowerCase().includes(query);
+            return titleMatch || contentMatch;
+        });
 
-        // Search in titles and pre-processed content
-        searchResults = posts
-            .filter(post => {
-                const titleMatch = post.title.toLowerCase().includes(query);
-                const contentMatch = postContent[post.id]?.toLowerCase().includes(query);
-                return titleMatch || contentMatch;
-            })
+        searchResults = filteredPosts
             .map(post => ({
                 ...post,
                 snippet: postContent[post.id] ? getContextSnippet(postContent[post.id], query) : ''
@@ -69,8 +66,8 @@
         showResults = true;
     }
 
-    // Debounced search handler
-    $: {
+    // Handle search input changes
+    function handleSearchInput() {
         if (searchTimeout) clearTimeout(searchTimeout);
         searchTimeout = setTimeout(performSearch, 300);
     }
@@ -95,6 +92,7 @@
         <input
             type="text"
             bind:value={searchQuery}
+            on:input={handleSearchInput}
             placeholder="Search posts..."
             class="w-full px-4 py-2 text-sm bg-gray-800 border border-gray-700 rounded-lg 
                    focus:outline-none focus:border-purple-500 text-gray-200 
