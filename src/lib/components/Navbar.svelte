@@ -2,12 +2,21 @@
   import SocialIcons from "./SocialIcons.svelte";
   import Search from "./Search.svelte";
   import { page } from '$app/stores';
+  import { browser } from '$app/environment';
 
   let isMenuOpen = false;
   
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
+
+  function handleLinkClick() {
+    if (isMenuOpen) {
+      isMenuOpen = false;
+    }
+  }
+
+  let isMobile = browser && window.innerWidth <= 768;
 </script>
 
 <nav class="sticky top-0 z-50 bg-gray-800/95 backdrop-blur-sm border-b border-gray-700">
@@ -35,6 +44,7 @@
       <li>
         <a 
           href="/" 
+          on:click={handleLinkClick}
           class="relative text-white group py-2 {$page.url.pathname === '/' ? 'active' : ''}"
         >
           Home
@@ -44,6 +54,7 @@
       <li>
         <a 
           href="/gallery" 
+          on:click={handleLinkClick}
           class="relative text-white group py-2 {$page.url.pathname === '/gallery' ? 'active' : ''}"
         >
           Gallery
@@ -53,6 +64,7 @@
       <li>
         <a 
           href="/about" 
+          on:click={handleLinkClick}
           class="relative text-white group py-2 {$page.url.pathname === '/about' ? 'active' : ''}"
         >
           About
@@ -62,9 +74,10 @@
       <li>
         <a 
           href="/resume" 
+          on:click={handleLinkClick}
           class="relative text-white group py-2 {$page.url.pathname === '/resume' ? 'active' : ''}"
         >
-          Résumé
+          Resume
           <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-200 origin-left group-hover:scale-x-100" />
         </a>
       </li>

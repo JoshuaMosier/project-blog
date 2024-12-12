@@ -2,11 +2,14 @@
     export let src = '';
     export let alt = '';
     let isOpen = false;
+    
+    // Add mobile detection
+    const isMobile = () => window.innerWidth <= 768;
 
     function handleKey(event) {
         if (event.key === 'Escape') {
             isOpen = false;
-        } else if ((event.key === 'Enter' || event.key === ' ') && !isOpen) {
+        } else if ((event.key === 'Enter' || event.key === ' ') && !isOpen && !isMobile()) {
             isOpen = true;
         }
     }
@@ -21,8 +24,8 @@
 <svelte:window on:keydown={handleKey} />
 
 <div 
-    class="cursor-zoom-in" 
-    on:click={() => isOpen = true}
+    class="cursor-zoom-in md:cursor-zoom-in cursor-default" 
+    on:click={() => !isMobile() && (isOpen = true)}
     on:keypress={handleKey}
     role="button"
     tabindex="0"

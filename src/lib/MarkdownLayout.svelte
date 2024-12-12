@@ -21,25 +21,28 @@
     import { onMount } from 'svelte';
     
     onMount(() => {
-        const images = document.querySelectorAll('.prose img:not(.no-lightbox)');
-        images.forEach(img => {
-            // Create wrapper and Lightbox component
-            const wrapper = document.createElement('div');
-            const lightbox = new Lightbox({
-                target: wrapper,
-                props: {
-                    src: img.getAttribute('src'),
-                    alt: img.getAttribute('alt') || ''
+        // Only apply lightbox if screen width is > 768px
+        if (window.innerWidth > 768) {
+            const images = document.querySelectorAll('.prose img:not(.no-lightbox)');
+            images.forEach(img => {
+                // Create wrapper and Lightbox component
+                const wrapper = document.createElement('div');
+                const lightbox = new Lightbox({
+                    target: wrapper,
+                    props: {
+                        src: img.getAttribute('src'),
+                        alt: img.getAttribute('alt') || ''
+                    }
+                });
+
+                // Move the image into the Lightbox slot
+                const slotContainer = wrapper.querySelector('[role="button"]');
+                if (slotContainer) {
+                    slotContainer.appendChild(img.cloneNode(true));
+                    img.parentNode.replaceChild(wrapper, img);
                 }
             });
-
-            // Move the image into the Lightbox slot
-            const slotContainer = wrapper.querySelector('[role="button"]');
-            if (slotContainer) {
-                slotContainer.appendChild(img.cloneNode(true));
-                img.parentNode.replaceChild(wrapper, img);
-            }
-        });
+        }
     });
 </script>
 
