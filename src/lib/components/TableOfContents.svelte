@@ -1,10 +1,11 @@
 <script>
   import { onMount } from 'svelte';
+  import { afterNavigate } from '$app/navigation';
   
   let headings = [];
   let activeId = '';
   
-  onMount(() => {
+  function initializeTableOfContents() {
     // Get all h2 and h3 headings from the article
     headings = Array.from(document.querySelectorAll('article h2, article h3'))
       .map(heading => {
@@ -46,8 +47,13 @@
     });
     
     return () => observer.disconnect();
-  });
-
+  }
+  
+  onMount(initializeTableOfContents);
+  
+  // Re-initialize when navigating between pages
+  afterNavigate(initializeTableOfContents);
+  
   function scrollToTop() {
     window.scrollTo({
       top: 0,

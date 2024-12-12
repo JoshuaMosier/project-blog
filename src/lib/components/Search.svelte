@@ -115,7 +115,7 @@
     </div>
 
     {#if showResults}
-        <div class="absolute z-50 w-full mt-2 bg-gray-800 border border-gray-700 rounded-lg 
+        <div class="absolute z-50 w-full mt-6 bg-gray-800 border border-gray-700 rounded-lg 
                     shadow-lg overflow-hidden">
             {#if searchResults.length > 0}
                 <ul>

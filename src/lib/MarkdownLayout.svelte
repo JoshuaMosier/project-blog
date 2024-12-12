@@ -21,6 +21,14 @@
     };
 
     import Giscus from '$lib/components/Giscus.svelte';
+    import { posts } from '$lib/posts';
+
+    // Find current post index
+    const currentPostIndex = posts.findIndex(post => post.title === title);
+    
+    // Get previous and next posts
+    const previousPost = currentPostIndex < posts.length - 1 ? posts[currentPostIndex + 1] : null;
+    const nextPost = currentPostIndex > 0 ? posts[currentPostIndex - 1] : null;
 </script>
 
 <article class="prose prose-invert max-w-4xl mx-auto">
@@ -54,6 +62,40 @@
     
     <div class="markdown-content max-w-2xl mx-auto">
         <slot />
+    </div>
+    
+    <div class="max-w-6xl mx-auto">
+        <hr class="my-16 border-gray-700" />
+        
+        <div class="grid grid-cols-2 gap-4">
+            {#if nextPost}
+                <a 
+                    href={nextPost.path}
+                    class="group flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors no-underline"
+                >
+                    <span class="mr-3 text-gray-400 group-hover:text-purple-300">←</span>
+                    <div class="flex flex-col">
+                        <span class="text-sm text-gray-400">Next</span>
+                        <span class="text-blue-300 group-hover:text-blue-400 line-clamp-2">{nextPost.title}</span>
+                    </div>
+                </a>
+            {:else}
+                <div></div>
+            {/if}
+
+            {#if previousPost}
+                <a 
+                    href={previousPost.path}
+                    class="group flex items-center justify-end p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors no-underline"
+                >
+                    <div class="flex flex-col items-end">
+                        <span class="text-sm text-gray-400">Previous</span>
+                        <span class="text-blue-300 group-hover:text-blue-400 line-clamp-2 text-right">{previousPost.title}</span>
+                    </div>
+                    <span class="ml-3 text-gray-400 group-hover:text-purple-300">→</span>
+                </a>
+            {/if}
+        </div>
     </div>
     
     <Giscus 
