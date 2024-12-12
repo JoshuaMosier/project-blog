@@ -2,6 +2,7 @@
 title: "Project Title Here"
 date: YYYY-MM-DD
 image: ./project-image.png
+categories: ["category1", "category2"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

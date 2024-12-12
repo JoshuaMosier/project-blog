@@ -27,7 +27,7 @@
         <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
         <li><a href="/gallery" class="text-white hover:text-gray-300">Gallery</a></li>
         <li><a href="/about" class="text-white hover:text-gray-300">About</a></li>
-        <li><a href="/resume" class="text-white hover:text-gray-300">Resume</a></li>
+        <li><a href="/resume" class="text-white hover:text-gray-300">Résumé</a></li>
       </ul>
 
       <div class="w-32 flex justify-end">

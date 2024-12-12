@@ -51,7 +51,7 @@
         <!-- Filter controls -->
         <div class="flex items-center gap-2">
             <span class="text-sm text-gray-400 mr-2">
-                {activeFilters.size ? 'Filtered by:' : 'Filter:'}
+                Filter:
             </span>
             {#each Object.entries(categories) as [id, category]}
                 <button
