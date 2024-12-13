@@ -70,7 +70,7 @@
                                     class="group relative text-blue-300 hover:text-purple-300 text-lg font-medium transition-colors duration-150 ease-in-out"
                                 >
                                     {#if post.image}
-                                        <div class="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 absolute right-full mr-4 top-1/2 -translate-y-1/2 transition-all duration-150 ease-in-out">
+                                        <div class="pointer-events-none opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 absolute right-full mr-4 top-1/2 -translate-y-1/2 transition-all duration-150 ease-in-out">
                                             <img 
                                                 src={post.image} 
                                                 alt={post.title}
