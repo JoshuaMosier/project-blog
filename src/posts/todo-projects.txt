@@ -5,17 +5,24 @@ Potential project posts:
 - Custom boxx controller v1/v2
 - Sand cast march madness medals
 - Mosier Madness snippet
+- College football playoff site
 - Mario Party pt1
 - Month-themed levitation secret santa
 - 100-pics solver
 - Melee stats analysis
 - Custom 3d printed desk console
 - NYC health rating stuff
-- OSHA website
 - Motion tracking cameras
-- Spurious stock correlations
 - Youtube/Book thumbnail mosaics
 - Lidar/Map poster stuff
 - Gamecube fidget toy
 - noblis persona generation
 - lightboxes (mandalorian, iron giant, animal crossing, nasa posters)
+- SSBM connected combo finder
+- Beatsaber map generator
+- LOTR Signs
+- Drinking Lamp
+- Bread box
+- Cutlery drawer
+- Garden Arch
+- 

@@ -63,12 +63,21 @@
                 <h2 class="text-3xl font-bold mb-4 text-gray-400">{year}</h2>
                 <ul class="space-y-2">
                     {#each yearPosts as post}
-                        <li class="flex justify-between items-baseline">
+                        <li class="flex justify-between items-baseline relative">
                             <div class="flex items-center gap-2">
                                 <a 
                                     href={post.path}
-                                    class="text-blue-300 hover:text-blue-400 text-lg"
+                                    class="group relative text-blue-300 hover:text-purple-300 text-lg font-medium transition-colors duration-150 ease-in-out"
                                 >
+                                    {#if post.image}
+                                        <div class="opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 absolute right-full mr-4 top-1/2 -translate-y-1/2 transition-all duration-150 ease-in-out">
+                                            <img 
+                                                src={post.image} 
+                                                alt={post.title}
+                                                class="max-w-[100px] max-h-[100px] w-auto h-auto object-contain rounded-lg bg-gray-800 border border-gray-700"
+                                            />
+                                        </div>
+                                    {/if}
                                     {post.title}
                                 </a>
                                 <div class="flex gap-1">
