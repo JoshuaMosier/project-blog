@@ -14,6 +14,12 @@
   {#if data.image}
     <meta property="og:image" content={data.image} />
   {/if}
+  <link 
+    rel="alternate" 
+    type="application/rss+xml" 
+    title="RSS Feed for Josh Mosier's Blog" 
+    href="/rss.xml"
+  />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-gray-900 text-white">
