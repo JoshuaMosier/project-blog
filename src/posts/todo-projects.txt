@@ -12,6 +12,7 @@ Potential project posts:
 - Melee stats analysis
 - Custom 3d printed desk console
 - NYC health rating stuff
+- NFL playoff stats stuff
 - Motion tracking cameras
 - Youtube/Book thumbnail mosaics
 - Lidar/Map poster stuff
@@ -25,4 +26,5 @@ Potential project posts:
 - Bread box
 - Cutlery drawer
 - Garden Arch
-- 
+- Badge-reel tourbillon
+- Electroplating nickel pieces

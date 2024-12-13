@@ -74,7 +74,7 @@
                                             <img 
                                                 src={post.image} 
                                                 alt={post.title}
-                                                class="max-w-[100px] max-h-[100px] w-auto h-auto object-contain rounded-lg bg-gray-800 border border-gray-700"
+                                                class="max-w-[200px] max-h-[200px] w-auto h-auto object-contain rounded-lg bg-gray-800 border border-gray-700"
                                             />
                                         </div>
                                     {/if}
