@@ -17,3 +17,4 @@ Potential project posts:
 - Youtube/Book thumbnail mosaics
 - Lidar/Map poster stuff
 - Gamecube fidget toy
+- noblis persona generation

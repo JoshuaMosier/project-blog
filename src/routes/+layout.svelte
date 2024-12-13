@@ -1,8 +1,10 @@
 <script>
   import "../app.css";
-  import { inject } from '@vercel/analytics';
   import Navbar from "$lib/components/Navbar.svelte";
+  import { inject } from '@vercel/analytics';
   inject();
+  import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+  injectSpeedInsights();
   export let data;
 </script>
 
