@@ -1,7 +1,7 @@
 // src/lib/config.js
 export const categories = {
-    'software': {
-        label: 'Software',
+    'programming': {
+        label: 'Programming',
         activeClass: 'bg-blue-900 text-blue-300',
         inactiveClass: 'bg-blue-900/30 text-blue-300/70 hover:bg-blue-900/50'
     },

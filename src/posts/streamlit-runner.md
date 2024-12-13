@@ -2,7 +2,7 @@
 title: Streamlit Runner - A Simple VS Code Extension
 date: 2024-12-10
 image: ./streamlit-runner.png
-categories: ["software"]
+categories: ["programming"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

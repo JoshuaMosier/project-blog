@@ -48,7 +48,7 @@
                 <img 
                     {src} 
                     {alt} 
-                    class="w-auto h-[90vh] max-w-[90vw] max-h-[90vh] object-contain cursor-zoom-out lightbox-image"
+                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain cursor-zoom-out lightbox-image"
                 />
             </button>
             <button

@@ -2,7 +2,7 @@
 title: "Building a Movie Poster Mosaic Generator"
 date: 2023-10-13
 image: ./movie-posters.jpg
-categories: ["software"]
+categories: ["programming"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">

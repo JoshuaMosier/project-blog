@@ -2,7 +2,7 @@
 title: "Plotify: Visualizing Your Spotify Listening Habits"
 date: 2020-01-01
 image: ./plotify.png
-categories: ["software"]
+categories: ["programming"]
 ---
 
 <div class="flex flex-col items-center w-full my-8">
