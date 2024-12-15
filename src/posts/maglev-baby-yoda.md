@@ -5,13 +5,66 @@ image: ./maglev-baby-yoda.png
 categories: ["3d-printing", "electronics"]
 ---
 
-<div class="flex flex-col items-center w-full my-8">
-    <img 
-        src="/posts/maglev-baby-yoda/maglev-baby-yoda.png" 
-        alt="3D printed Baby Yoda floating in his pram using magnetic levitation" 
-        class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
-    />
-</div>
+<script>
+    import PostCarousel from '$lib/components/PostCarousel.svelte';
+
+    const items = [
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/maglev-baby-yoda.png", 
+            alt: "Magnetic Levitating Baby Yoda Crib" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_1.jpg", 
+            alt: "Primed resin Baby Yoda" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_2.jpg", 
+            alt: "Primed/Sanded Crib" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_3.jpg", 
+            alt: "Resin (left) vs PLA (right)" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_4.jpg", 
+            alt: "Resin (left) vs PLA (right)" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_5.jpg", 
+            alt: "Resin (left) vs PLA (right)" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_6.jpg", 
+            alt: "Painting in progress" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_7.jpg", 
+            alt: "Comparing crib to show reference" 
+        },
+        { 
+            type: 'image',
+            src: "/posts/maglev-baby-yoda/process_8.jpg", 
+            alt: "All coming together!" 
+        },
+        { 
+            type: 'video',
+            src: "/posts/maglev-baby-yoda/process_9.mp4",
+            alt: "Magnetic levitation in action"
+        }
+    ];
+</script>
+
+
+<PostCarousel {items} />
+
 
 A custom magnetic levitating Baby Yoda display I created as a Christmas gift for my sister, combining 3D printing, painting, and electronics to bring a piece of The Mandalorian to life.
 
