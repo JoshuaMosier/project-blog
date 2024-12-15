@@ -94,7 +94,7 @@
                 <img 
                     src={currentItem.src} 
                     alt={currentItem.alt} 
-                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain lightbox-image"
+                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain lightbox-image no-lightbox"
                 />
             {/if}
 
@@ -118,7 +118,7 @@
                     </button>
 
                     <!-- Item counter -->
-                    <div class="bg-black/50 px-3 py-1 rounded-full text-white/70 text-sm">
+                    <div class="bg-black/50 px-3 py-1 rounded-full text-white/70 text-sm font-mono w-[6rem] text-center">
                         {currentIndex + 1} / {items.length}
                     </div>
 
