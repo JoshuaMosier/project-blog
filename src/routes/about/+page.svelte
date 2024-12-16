@@ -14,7 +14,7 @@
         </div>
         <div class=" md:w-64 md:h-64 rounded-full overflow-hidden shadow-lg border-4 border-purple-300/20 flex-shrink-0">
             <img 
-                src="/profile.png" 
+                src="/profile-color.png" 
                 alt="Josh Mosier" 
                 class="w-full h-full object-cover"
             />
