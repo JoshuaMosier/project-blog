@@ -79,6 +79,9 @@
         <div 
             class="relative max-w-[90vw] max-h-[90vh]"
             on:click|stopPropagation={() => {}}
+            on:keypress={() => {}}
+            role="presentation"
+            tabindex="-1"
         >
             {#if currentItem.type === 'video'}
                 <video
