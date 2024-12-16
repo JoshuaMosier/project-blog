@@ -6,12 +6,12 @@ categories: ["electronics", "3d-printing"]
 ---
 
 <script>
-  import ObjViewer from '$lib/components/ObjViewer.svelte';
+  import GlbViewer from '$lib/components/GlbViewer.svelte';
 </script>
 
 <div class="flex flex-col items-center w-full my-8">  
     <div class="w-full max-w-xl rounded-lg overflow-hidden">
-        <ObjViewer objUrl="/posts/senior-design/haptic.obj" />
+        <GlbViewer glbUrl="/posts/senior-design/haptic2.glb" />
     </div>
     <a  
         href="https://arxiv.org/abs/2109.01747"  
@@ -22,7 +22,6 @@ categories: ["electronics", "3d-printing"]
         View paper on Arxiv →  
     </a>  
 </div> 
-
 As part of my senior design team at Virginia Tech, we tackled this problem by developing a novel haptic wristband that could bridge the communication gap between robots and their human operators.
 
 ## The Problem

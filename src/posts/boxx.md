@@ -75,7 +75,7 @@ categories: ["3d-printing", "electronics"]
 <PostCarousel {items} />
 
 I built these custom arcade-style Super Smash Bros. Melee controllers as a birthday gift for my brother.
-Look through the image gallery above for more images of both builds!
+Click on the gallery above for more images and videos of both builds!
 
 ## The Build Process  
 
