@@ -1,7 +1,7 @@
 ---
 title: "Magnetic Levitating Master Chief Helmet"
 date: 2022-03-25
-image: ./chief-helmet.jpg
+image: ./chief-helmet2.JPG
 categories: ["3d-printing", "electronics"]
 ---
 
