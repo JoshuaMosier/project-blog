@@ -1,7 +1,5 @@
 Potential project posts:
-- Levitating Ghost/Banshee
 - Custom gamecube controller for james
-- Custom boxx controller v1/v2
 - Sand cast march madness medals
 - Mosier Madness snippet
 - College football playoff site
