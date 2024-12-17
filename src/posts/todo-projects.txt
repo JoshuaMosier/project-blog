@@ -1,6 +1,5 @@
 Potential project posts:
 - Custom gamecube controller for james
-- Sand cast march madness medals
 - Mosier Madness snippet
 - College football playoff site
 - Mario Party pt1

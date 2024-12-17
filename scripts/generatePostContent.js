@@ -20,9 +20,13 @@ async function generatePostContent() {
         // Process content: remove frontmatter, HTML tags, and code blocks
         const processedContent = content
             .replace(/---[\s\S]*?---/, '') // Remove frontmatter
-            .replace(/<[^>]*>/g, ' ')      // Remove HTML tags
-            .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-            .replace(/\s+/g, ' ')          // Normalize whitespace
+            .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+            .replace(/<div[\s\S]*?<\/div>/gi, '')
+            .replace(/<a[\s\S]*?<\/a>/gi, '')
+            .replace(/<[^>]+>/g, '')
+            .replace(/\s+/g, ' ')
+            .replace(/^\s+/, '')
+            .replace(/\n{3,}/g, '\n\n')
             .trim();
         
         postContent[id] = processedContent;
