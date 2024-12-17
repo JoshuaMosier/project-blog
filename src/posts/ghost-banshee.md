@@ -96,10 +96,10 @@ categories: ["3d-printing", "electronics"]
 </script>
 
 
-# Halo Reach: Ghost
+## Halo Reach: Ghost
 <PostCarousel items={ghostItems} />
 
-# Halo Reach: Banshee
+## Halo Reach: Banshee
 <PostCarousel items={bansheeItems} />
 
 I created these custom floating Halo Ghost and Banshee models as part of a secret santa project. Click on the image galleries above to see more of the build process!
