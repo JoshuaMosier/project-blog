@@ -123,8 +123,30 @@
 
 <style>
     :global(.prose) {
-        color: #fff;
+        color: #cbd5e1; /* text-slate-300 - base color for all prose content */
         font-family: 'Inter', sans-serif;
+    }
+    
+    /* Ensure consistent text color across all text elements */
+    :global(.prose p),
+    :global(.prose ul),
+    :global(.prose ol),
+    :global(.prose li),
+    :global(.prose blockquote),
+    :global(.prose strong),
+    :global(.prose em) {
+        color: #cbd5e1;
+    }
+    
+    /* Keep the existing link color */
+    :global(.prose a) {
+        color: #93c5fd;
+    }
+    
+    /* Keep the first paragraph slightly brighter */
+    :global(.prose > p:first-of-type) {
+        @apply text-lg leading-relaxed;
+        color: #cbd5e1;
     }
     
     :global(.prose h1, .prose h2, .prose h3, .prose h4) {
@@ -137,20 +159,12 @@
         font-size: 0.9em;
     }
     
-    :global(.prose a) {
-        color: #93c5fd; /* text-blue-300 */
-    }
-    
     :global(.prose a:hover) {
         color: #60a5fa; /* text-blue-400 */
     }
     
     :global(.prose h2) {
         @apply mt-12 mb-6 pb-2 border-b border-gray-700;
-    }
-    
-    :global(.prose > p:first-of-type) {
-        @apply text-lg text-gray-300 leading-relaxed;
     }
     
     :global(.prose blockquote) {

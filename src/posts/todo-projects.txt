@@ -27,3 +27,4 @@ Potential project posts:
 - Levitating EVE
 - ASSIP paper
 - Etched water glasses
+- custom pokerchips

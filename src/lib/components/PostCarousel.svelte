@@ -43,7 +43,7 @@
         <!-- Mobile Carousel -->
         <div class="md:hidden w-full px-4">
             <div class="relative">
-                <div class="aspect-[4/3] w-full flex items-center justify-center bg-gray-100 rounded-lg overflow-hidden">
+                <div class="aspect-[4/3] w-full flex items-center justify-center bg-inherit rounded-lg overflow-hidden">
                     {#if items[mobileCurrentIndex].type === 'video'}
                         <video
                             src={items[mobileCurrentIndex].src}
