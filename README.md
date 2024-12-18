@@ -1,38 +1,33 @@
-# create-svelte
+# Josh Mosier Portfolio & Blog
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Responsive portfolio built with SvelteKit, featuring my projects and blog posts.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- 🎨 Responsive project gallery with category filtering
+- 📝 Markdown-based blog posts with syntax highlighting
+- 📊 Interactive data visualizations using Plotly
+- 🎮 3D model viewers for OBJ and GLB files
+- 💬 Comments system using Giscus
+- 📱 Mobile-friendly design
+- 🌙 Dark theme optimized
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Tech Stack
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- [SvelteKit](https://kit.svelte.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [MDsveX](https://mdsvex.com/)
+- [Three.js](https://threejs.org/)
+- [Plotly](https://plotly.com/javascript/)
+- [Prism](https://prismjs.com/)
 
-## Developing
+## Project Structure
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- `/src/posts/` - Markdown blog posts
+- `/src/routes/` - SvelteKit routes and pages
+- `/src/lib/` - Reusable components and utilities
+- `/static/` - Static assets (images, 3D models, etc.)
 
-```bash
-npm run dev
+## License
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+MIT License
