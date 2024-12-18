@@ -53,7 +53,7 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         {#each filteredPosts as post}
-            <a href={post.path} class="block hover:opacity-75 transition-opacity">
+            <a href={post.path} class="block hover:opacity-75 transition-opacity [@media(hover:hover)]:hover:opacity-75">
                 {#if post.image}
                     <div class="relative">
                         <img 
