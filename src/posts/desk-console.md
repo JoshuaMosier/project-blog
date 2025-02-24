@@ -64,7 +64,7 @@ I did forget about the camera bulge on the back of the phone on the first print,
 ### Other Details
 Even though this solution is specific to my setup, I think the design strikes a good balance between fitting my exact needs but also allowing for some expansion with the storage in the back. I find that people can go overboard with the capability of 3d-printing and end up with a solution that won't change with their needs.
 
-The phone dock and release button are more or less a copy of Scott's design, but I think I ended up with a more compact solution and it's by far the most satisfying part of the design. It looks like an integrated screen when it's in the dock. Another nice feature is that when my phone is in standby mode I can use Tuya smart home widgets to control my lights manually.
+The phone dock and release button are more or less a copy of Scott's design, but I think I ended up with a more compact solution and it's by far the most satisfying part of the design. My phone looks like an integrated screen when it's in the dock. Another nice feature is that when my phone is in standby mode I can use Tuya smart home widgets to control my lights manually.
 
 ## Conclusion
 This project perfectly exemplifies why I love 3D printing - the ability to create hyper-specific solutions that you simply can't buy off the shelf. The console has become an essential part of my desk setup. I haven't had to get rid of anything or move them off my desk, and now they all have a dedicated place which makes it feel more organized.
