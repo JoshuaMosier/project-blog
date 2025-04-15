@@ -46,7 +46,7 @@ categories: ["3d-printing","programming"]
 </script>
 
 <PostCarousel {items} />
-A few days ago I saw this meme and normally I wouldn't think twice about it, but it made me wonder if there was a better option for dealing with change other than rounding up a transaction or keeping coins jangling in your pocket. 
+Recently, I saw this meme and normally wouldn't think twice about it, but it made me wonder if there was a better option for dealing with change other than rounding up a transaction or keeping coins jangling in your pocket. 
 
 <div class="flex flex-col items-center w-full my-8">
     <img 
@@ -56,7 +56,7 @@ A few days ago I saw this meme and normally I wouldn't think twice about it, but
     />
 </div>
 
-Now, I typically never pay with cash when I have the option of using a credit card, and I can honestly say I've never paid with exact change other than quarters. That being said, this problem seemed particularly interesting to me as a project because: 
+Now, I typically never pay with cash when I have the option of using a credit card, and I can honestly say I've never paid with exact change other than quarters. However, this problem seemed particularly interesting to me as a project because: 
 
 1. There was a clear objective (make something that holds coins more better-er) 
 2. There were obvious optimization constraints (make it as small/thin as possible)
@@ -64,12 +64,12 @@ Now, I typically never pay with cash when I have the option of using a credit ca
 4. I hadn't seen anyone attempt something similar before
 5. I thought it would be a good use of 3D-printing
 
-Throwing all of these factors together, it seemed to me that the idea fell into the unique category of having practical utility, reasonably wide appeal, and initially didn't seem like it would be that complicated (a classic).
+Considering these factors, the idea fell into the unique category of having practical utility, reasonably wide appeal, and _initially_ didn't seem like it would be that complicated (a classic).
 
 ## The Design Process  
 
 ### Precedence 
-I didn't start out researching if this existed and instead assumed that because I hadn't seen it before it meant it simply never existed. It was only later on in the design process that I spent some time looking for similar examples. I was positive that humans had simply spent too much time carrying around change to not have already tried thinking of a better solution. I was mostly correct, and found a few different examples after some googling and checking a few different LLMs with deepsearch. The closest overall was definitely <a href="https://www.changecard.com/" target="_blank" rel="noopener noreferrer">ChangeCard.com</a> but I found some examples from etsy for coin holders as well.
+I didn't start out researching if this existed and instead assumed that because I hadn't seen it before it meant it simply never existed. It was only later on in the design process that I spent some time looking for similar examples. I was positive that humans had simply spent too much time carrying around change to not have already tried thinking of a better solution. I was mostly correct and found a few different examples after some googling and checking a few different LLMs with deepsearch. The closest overall was definitely <a href="https://www.changecard.com/" target="_blank" rel="noopener noreferrer">ChangeCard.com</a> but I found some examples from etsy for coin holders as well.
 
 <div class="flex flex-col items-center w-full">
     <img 
@@ -84,7 +84,7 @@ I didn't start out researching if this existed and instead assumed that because 
 
 ChangeCard had clearly already come up with a similar concept, although not for the same purpose. It was designed as a "unique educational tool that teaches kids how to make change, how to manage money, and how to understand America's monetary system", and "primarily as a promotional product". So its intention was not to allow someone to conveniently store coins and make exact change for a purchase, but instead as a tool or game to teach someone to make exact change. 
 
-I couldn't find any examples of the physical changecard product \(the website has clearly not been updated since the early 2000s\), but I did find a few product listings on etsy of coin holders. However, the etsy designs either did not have the proper number of coins to make perfect change, weren't designed for US coins, or were too large to fit in the credit card slot of a wallet. So I continued working on this with only slight disappointment of not having come up with a novel idea.
+I couldn't find any examples of the physical changecard product \(the website has clearly not been updated since the early 2000s\), but I did find a few product listings on etsy of coin holders. However, the etsy designs either did not have the proper number of coins to make perfect change, weren't designed for US coins, or were too large to fit in the credit card slot of a wallet. So I continued working on this with only the slight disappointment of not having come up with a novel idea.
 
 ### Constraints
 #### Optimal Coin Set
@@ -155,11 +155,11 @@ Even though I found out it was possible to optimally arrange the set of coins wi
         class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
     />
 </div>
-I was able to find another solution with a symmetrical coin layout with a very small overlap cost. This one met all of my criteria, and if I kept the target width of 85.6mm and used 1mm spacing between each coin I could fit the layout only 3mm larger the normal height of a credit card.
+I was able to find another solution with a symmetrical coin layout with a very small overlap cost. This one met my criteria, and if I kept the target width of 85.6mm and used 1mm spacing between each coin I could fit the layout only 3mm larger than the normal height of a credit card.
 
 ### Initial Design
 #### Transition Fit
-Now that I had the layout more or less decided, I started mocking up sketches in Fusion. Configuring the layout of the coins was simple, but the next thing I had to determine was how someone was going to insert and remove coins without them falling out. The usual suspect here was using a small offset in the design \(0.1-0.3mm\) so that if you inserted a coin from the top you could press it into the slot for each coin. If I added a small cutout below each coin you would also be able to push it out from the bottom. An extra layer would be to draft the angles inward by a few degrees so that coins which might be worn down on the edges would still be retained.
+Now that I had the layout decided, I started mocking up sketches in Fusion. Configuring the layout of the coins was simple, but the next thing I had to determine was how someone was going to insert and remove coins without them falling out. The usual suspect here was using a small offset in the design \(0.1-0.3mm\) so that if you inserted a coin from the top you could press it into the slot for each coin. If I added a small cutout below each coin you would also be able to push it out from the bottom. An extra layer would be to draft the angles inward by a few degrees so that coins which might be worn down on the edges would still be retained.
 <div class="flex flex-col items-center w-full">
     <img 
         src="/posts/coin-holder/cad-v0.png" 
@@ -167,11 +167,11 @@ Now that I had the layout more or less decided, I started mocking up sketches in
         class="w-3/4 md:w-2/3 lg:w-1/2 h-auto rounded-lg shadow-lg" 
     />
 </div>
-This design would work well enough for a tuned 3D printer, but wouldn't be guaranteed to work if extrusion was off by even +/- 0.1mm. Testing a few different coins, I also found that coins themselves could be off by 0.2mm in diameter so a brand new coin might stick out and an old one may only be barely held in. When I tried to decrease the perimeter of material holding on to each coin and lowering the spacing, it compensated well but would cause the card to bend slightly from all of the pressure in the plastic holding the coins.
+This design would work well enough for a tuned 3D printer but wouldn't be guaranteed to work if extrusion was off by even +/- 0.1mm. Testing a few different coins, I also found that coins themselves could be off by 0.2mm in diameter so a brand-new coin might stick out and an old one may only be barely held in. When I tried to decrease the perimeter of material holding on to each coin and lowering the spacing, it compensated well but would cause the card to bend slightly from the pressure in the plastic holding the coins.
 
 ### 3D Printing Optimizations
 #### Snapfit
-A more reliable design to account for variation in coin sizes would be to use a snapfit or over-center mechanism. By using the natural flexibility of 3D printed parts, we can design a gap that is smaller than the diameter of a coin, and by pushing the coin we can expand that gap to insert a coin. As long as the part isn't stressed too much, the piece will flex back into place and create a gap that is now holding the coin in place. By experimenting with different cross sections, thickness, plastics, etc. you can control the amount of stiffness and make it easier or harder to insert or remove a coin. Snap-fits can be tricky to design without using supports, but is definitely under-utilized for 3D printing parts that can be printed and assembly without fasteners.
+A more reliable design to account for variation in coin sizes would be to use a snapfit or over-center mechanism. By using the natural flexibility of 3D printed parts, we can design a gap that is smaller than the diameter of a coin, and by pushing the coin we can expand that gap to insert a coin. As long as the part isn't stressed too much, the piece will flex back into place and create a gap that is now holding the coin in place. By experimenting with different cross sections, thickness, plastics, etc. you can control the amount of stiffness and make it easier or harder to insert or remove a coin. Snap-fits can be tricky to design without using supports but are under-utilized for 3D printing parts that can be printed and assembly without fasteners.
 <div class="flex flex-col items-center w-full">
     <img 
         src="/posts/coin-holder/snapfit.jpg" 
@@ -181,7 +181,7 @@ A more reliable design to account for variation in coin sizes would be to use a 
 </div>
 
 #### Edge Coins
-For the coins on the outside edge of the holder, I used a gap width 0.2 mm smaller than the original coin diameter and created the holding cavity with a diameter 0.2 mm larger. That probably seems like a small amount, but it is the difference between the coin requiring force to insert and it spinning freely in the holding cavity. The extra benefit of this design is that we are only stressing the plastic when moving the coin, so we avoid 'creep' that may cause the flexure to become overworked and weakened over time.
+For the coins on the outside edge of the holder, I used a gap width 0.2 mm smaller than the original coin diameter and created the holding cavity with a diameter 0.2 mm larger. That probably seems like a small amount, but it is the difference between the coin requiring force to insert and spinning freely in the holding cavity. The extra benefit of this design is that we are only stressing the plastic when moving the coin, so we avoid 'creep' that may cause the flexure to become overworked and weakened over time.
 
 To hold the coin from above, I added a chamfered transition to a circle 1.2 mm smaller so that the coin would not fall out if the holder was turned upside down. On the bottom edge, I added a slot cutout which makes it easier to pinch the coin from the top and bottom when inserting/removing.
 
@@ -194,7 +194,7 @@ To hold the coin from above, I added a chamfered transition to a circle 1.2 mm s
 </div>
 
 #### Interior Coins
-There are two coins on the interior of the holder, a quarter and a nickel. It's not possible to use the same snapfit techniques for these coins since there isn't enough space to insert them from the side. We still have our same problems from the transition fit from before, so I tried to come up with something more clever. We need something that can snugly fit coins which are slightly over and under sized. My approach was to design an 'arm' that by default is narrower than the coin, but can flex outwards to fit the coin. This way the coin can be inserted from the top, and the arm will apply pressure from the side to keep the coin in place.
+There are two coins on the interior of the holder, a quarter and a nickel. It's not possible to use the same snapfit techniques for these coins since there isn't enough space to insert them from the side. We still have our same problems from the transition fit from before, so I tried to come up with something more clever. We need something that can snugly fit coins which are slightly over and under sized. My approach was to design an 'arm' that by default is narrower than the coin but can flex outwards to fit the coin. This way the coin can be inserted from the top, and the arm will apply pressure from the side to keep the coin in place.
 <div class="flex flex-col items-center w-full">
     <img 
         src="/posts/coin-holder/internal-coin.png" 
@@ -237,7 +237,7 @@ Print one yourself: <a href="https://makerworld.com/en/models/1321404-wallet-siz
 </div> 
 
 ## Conclusion
-Overall this was a fun project to turn around in just a few days and I'm pleased with the final result. The combination of the project constraints, simulated packing, and design optimization was good practice combining my skillsets. I'll personally keep this in my backpack just in case I need to make change or need a spare coin for heads or tails, but I'm sure it'll be helpful to the right person. 
+Overall this was a fun project to turn around in just a few days and I'm pleased with the result. The combination of the project constraints, simulated packing, and design optimization was good practice combining my skillsets. I'll personally keep this in my backpack just in case I need to make change or need a spare coin for heads or tails, but I'm sure it'll be helpful to the right person. 
 
 #### Files
 <!-- github, makerworld, step file-->
