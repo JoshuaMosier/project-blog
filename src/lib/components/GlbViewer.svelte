@@ -5,6 +5,9 @@
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
   
     export let glbUrl;
+    export let cameraPosition = { x: 0, y: 0, z: 1.6 };
+    export let cameraTarget = { x: 0, y: 0, z: 0 };
+    export let autoRotate = true;
     let container;
   
     onMount(() => {
@@ -25,8 +28,13 @@
       const controls = new OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
-      controls.autoRotate = true;
+      controls.autoRotate = autoRotate;
       controls.autoRotateSpeed = 0.5;
+  
+      // Set initial camera position and target
+      camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
+      controls.target.set(cameraTarget.x, cameraTarget.y, cameraTarget.z);
+      controls.update();
   
       // Load GLB file
       const loader = new GLTFLoader();
