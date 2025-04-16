@@ -60,11 +60,11 @@ Now, I typically never pay with cash when I have the option of using a credit ca
 
 1. There was a clear objective (make something that holds coins more better-er) 
 2. There were obvious optimization constraints (make it as small/thin as possible)
-3. It represented a solution to an almost universal problem
+3. It represented a solution to an almost universal problem ( ... from 20 years ago)
 4. I hadn't seen anyone attempt something similar before
 5. I thought it would be a good use of 3D-printing
 
-Considering these factors, the idea fell into the unique category of having practical utility, reasonably wide appeal, and _initially_ didn't seem like it would be that complicated (a classic).
+Considering these factors, the idea fell into the unique category of having a clear objective, interesting design parameters, and _initially_ didn't seem like it would be that complicated (a classic).
 
 ## The Design Process  
 
