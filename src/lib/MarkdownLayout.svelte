@@ -113,12 +113,12 @@
         </div>
     </div>
     
-    <Giscus 
+    <!-- <Giscus 
         repo="JoshuaMosier/project-blog"
         repoId="R_kgDOMnDwhg"
         category="General"
         categoryId="DIC_kwDOMnDwhs4ClJQd"
-    />
+    /> -->
 </article>
 
 <style>
