@@ -1,6 +1,7 @@
 <script>
     import { getPostsByYear } from '$lib/posts';
     import { categories } from '$lib/config';
+    import SEO from '$lib/components/SEO.svelte';
     
     const postsByYear = getPostsByYear();
     let activeFilters = new Set();
@@ -25,6 +26,8 @@
         ]).filter(([_, posts]) => posts.length > 0)
     );
 </script>
+
+<SEO />
 
 <div class="max-w-4xl mx-auto">
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0 mb-8">

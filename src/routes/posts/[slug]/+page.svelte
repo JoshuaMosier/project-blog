@@ -1,8 +1,16 @@
 <script>
     import ReadingProgress from '$lib/components/ReadingProgress.svelte';
     import TableOfContents from '$lib/components/TableOfContents.svelte';
+    import SEO from '$lib/components/SEO.svelte';
     export let data;
 </script>
+
+<SEO 
+    title={data.metadata.title}
+    description={data.metadata.description}
+    image={data.metadata.image}
+    article={true}
+/>
 
 <ReadingProgress />
 

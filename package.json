@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "node scripts/generatePostContent.js && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"optimize-images": "node scripts/optimize-images.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -29,6 +30,7 @@
 		"plotly.js-dist": "^2.35.2",
 		"prismjs": "^1.29.0",
 		"rehype-prism-plus": "^2.0.0",
+		"sharp": "^0.34.5",
 		"three": "^0.168.0"
 	}
 }

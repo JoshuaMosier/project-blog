@@ -1,14 +1,21 @@
 <script>
   import { onMount } from 'svelte';
-  import * as THREE from 'three';
-  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-  import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
-  import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
+  // Remove static imports for lazy loading
+  // import * as THREE from 'three';
+  // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+  // import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+  // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 
   export let objUrl;
   let container;
 
-  onMount(() => {
+  onMount(async () => {
+    // Dynamic imports
+    const THREE = await import('three');
+    const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js');
+    const { OBJLoader } = await import('three/examples/jsm/loaders/OBJLoader.js');
+    const { MTLLoader } = await import('three/examples/jsm/loaders/MTLLoader.js');
+
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x1f2937); // Match your site's background
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -20,7 +27,7 @@
     container.appendChild(renderer.domElement);
 
     // Enhanced lighting setup
-    setupLighting(scene);
+    setupLighting(scene, THREE);
 
     // Add controls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -85,7 +92,7 @@
     };
   });
 
-  function setupLighting(scene) {
+  function setupLighting(scene, THREE) {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
     const keyLight = new THREE.DirectionalLight(0xffffff, 1);
     keyLight.position.set(5, 5, 5);

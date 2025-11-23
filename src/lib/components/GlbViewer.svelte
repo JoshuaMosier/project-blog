@@ -1,8 +1,9 @@
 <script>
     import { onMount } from 'svelte';
-    import * as THREE from 'three';
-    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+    // Remove static imports to enable lazy loading
+    // import * as THREE from 'three';
+    // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+    // import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
   
     export let glbUrl;
     export let cameraPosition = { x: 0, y: 0, z: 1.6 };
@@ -10,7 +11,12 @@
     export let autoRotate = true;
     let container;
   
-    onMount(() => {
+    onMount(async () => {
+      // Dynamic imports
+      const THREE = await import('three');
+      const { OrbitControls } = await import('three/examples/jsm/controls/OrbitControls.js');
+      const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
+
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0x1f2937);
       const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -22,7 +28,7 @@
       container.appendChild(renderer.domElement);
   
       // Enhanced lighting setup
-      setupLighting(scene);
+      setupLighting(scene, THREE);
   
       // Add controls
       const controls = new OrbitControls(camera, renderer.domElement);
@@ -94,7 +100,7 @@
       };
     });
   
-    function setupLighting(scene) {
+    function setupLighting(scene, THREE) {
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
       const keyLight = new THREE.DirectionalLight(0xffffff, 1);
       keyLight.position.set(5, 5, 5);

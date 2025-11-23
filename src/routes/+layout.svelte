@@ -9,13 +9,6 @@
 </script>
 
 <svelte:head>
-  <title>{data.title ? `${data.title} | Josh Mosier` : 'Josh Mosier'}</title>
-  <meta name="description" content={data.description || 'Personal portfolio and blog of Josh Mosier'} />
-  <meta property="og:title" content={data.title || 'Josh Mosier'} />
-  <meta property="og:description" content={data.description} />
-  {#if data.image}
-    <meta property="og:image" content={data.image} />
-  {/if}
   <link 
     rel="alternate" 
     type="application/rss+xml" 

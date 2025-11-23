@@ -5,49 +5,81 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force scrollbar to be always visible */
-html {
-  overflow-y: scroll;
+@layer base {
+  /* Force scrollbar to be always visible */
+  html {
+    overflow-y: scroll;
+  }
+
+  /* Base typography styles */
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+  }
+
+  /* Heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
 }
 
-/* Base typography styles */
-body {
-  font-family: 'Inter', sans-serif;
-}
+@layer components {
+  .active {
+    @apply text-blue-500;
+  }
 
-code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9em;
-}
+  /* Prose / Markdown Styles */
+  .prose {
+    color: #cbd5e1; /* text-slate-300 - base color for all prose content */
+    font-family: 'Inter', sans-serif;
+  }
 
-/* Heading styles */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-}
+  .prose h1 {
+    @apply text-4xl md:text-5xl font-bold mb-8 text-purple-300;
+    font-family: 'Space Grotesk', sans-serif;
+  }
 
-.active {
-  @apply text-blue-500;
-}
-
-.prose h1 {
-  @apply text-4xl md:text-5xl font-bold mb-8 text-purple-300;
-}
-
-.prose h2 {
+  .prose h2 {
     @apply text-2xl md:text-3xl font-semibold mt-12 mb-6 pb-2 border-b border-gray-700 text-purple-200;
-}
+    font-family: 'Space Grotesk', sans-serif;
+  }
 
-.prose h3 {
+  .prose h3 {
     @apply text-xl md:text-2xl font-medium mt-8 mb-4 text-blue-200;
-}
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .prose h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
 
-/* Add smooth underline animation for links */
-.prose a {
-    position: relative;
-    text-decoration: none;
-}
+  /* Consistent text color across elements */
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose li,
+  .prose blockquote,
+  .prose strong,
+  .prose em {
+    color: #cbd5e1;
+  }
 
-.prose a::after {
+  /* Links */
+  .prose a {
+    @apply text-blue-300 relative no-underline;
+  }
+
+  .prose a:hover {
+    @apply text-blue-400;
+  }
+
+  /* Smooth underline animation */
+  .prose a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -58,21 +90,51 @@ h1, h2, h3, h4, h5, h6 {
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
-}
+  }
 
-.prose a:hover::after {
+  .prose a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-}
+  }
 
-.prose pre {
-    @apply bg-gray-800/70 border border-gray-700 rounded-lg shadow-lg;
+  /* First paragraph */
+  .prose > p:first-of-type {
+    @apply text-lg leading-relaxed text-slate-300;
+  }
+
+  /* Code blocks */
+  .prose code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+  }
+
+  .prose pre {
+    @apply bg-gray-800/70 border border-gray-700 rounded-lg shadow-lg my-6 transition-transform duration-200 ease-out;
     position: relative;
-    margin: 1.5em 0;
-    transition: transform 0.2s ease;
-}
+  }
 
-.prose pre:hover {
+  .prose pre:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px -10px rgba(0,0,0,0.3);
+  }
+
+  /* Blockquotes */
+  .prose blockquote {
+    @apply bg-gray-800/50 border-l-4 border-purple-400 p-4 rounded-r-lg;
+  }
+
+  /* Images */
+  .prose img {
+    @apply rounded-lg shadow-lg;
+  }
+
+  .prose img:not(.no-lightbox) {
+    @apply mx-auto block w-[400px] max-w-full;
+  }
+
+  /* Lightbox specific */
+  .lightbox-image {
+    width: auto !important;
+    max-width: none !important;
+  }
 }
