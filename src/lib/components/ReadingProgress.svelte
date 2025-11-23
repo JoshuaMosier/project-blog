@@ -1,9 +1,11 @@
 <script>
-  import { onMount } from 'svelte';
-  
-  let progress = 0;
+  import { onMount, onDestroy } from 'svelte';
+  import { readingProgress, showReadingProgress } from '$lib/stores/readingProgress';
   
   onMount(() => {
+    // Enable the progress bar
+    showReadingProgress.set(true);
+    
     const updateProgress = () => {
       const article = document.querySelector('article');
       if (!article) return;
@@ -19,20 +21,27 @@
       // Calculate current scroll position relative to the article
       const currentScroll = scrollTop - articleTop;
       
-      // Calculate progress percentage, ensuring we reach 100% at the bottom
-      progress = Math.max(0, Math.min(100, (currentScroll / scrollableDistance) * 100));
+      // Calculate progress percentage
+      const newProgress = Math.max(0, Math.min(100, (currentScroll / scrollableDistance) * 100));
+      readingProgress.set(newProgress);
     };
     
     window.addEventListener('scroll', updateProgress);
-    updateProgress(); // Initial calculation
+    window.addEventListener('resize', updateProgress);
     
-    return () => window.removeEventListener('scroll', updateProgress);
+    // Initial calculation
+    setTimeout(updateProgress, 100);
+    
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', updateProgress);
+    };
+  });
+
+  onDestroy(() => {
+    showReadingProgress.set(false);
+    readingProgress.set(0);
   });
 </script>
 
-<div class="fixed top-[70px] left-0 w-full h-0.5 bg-gray-800 z-50">
-  <div 
-    class="h-full bg-purple-300 transition-all duration-100 ease-out" 
-    style:width="{progress}%"
-  />
-</div> 
+<!-- No visual output, just logic -->

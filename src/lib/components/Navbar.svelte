@@ -3,6 +3,7 @@
   import Search from "./Search.svelte";
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
+  import { readingProgress, showReadingProgress } from '$lib/stores/readingProgress';
 
   let isMenuOpen = false;
   
@@ -87,4 +88,11 @@
       <!-- <Search /> -->
     </div>
   </div>
-</nav> 
+  
+  {#if $showReadingProgress}
+    <div 
+      class="absolute bottom-0 left-0 w-full h-0.5 bg-purple-300 transition-all duration-100 ease-out z-50" 
+      style:width="{$readingProgress}%"
+    />
+  {/if}
+</nav>
