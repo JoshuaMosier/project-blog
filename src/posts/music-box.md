@@ -1,5 +1,5 @@
 ---
-title: "Samsung Ringtone Music Box"
+title: "Samsung Alarm Music Box"
 description: "I made Samsung's infamous alarm sound into a 3d-printed music box."
 date: 2025-08-02
 image: ./music-box.png
@@ -30,7 +30,7 @@ Turns out I'm not alone:
      <img src="/posts/music-box/homecoming-youtube-comments.png" alt="Homecoming Comments" class="w-full rounded-lg shadow-md" />
 </div>
 
-The ringtone was clearly styled to sound like a music box, but I couldn't find any historical song it was based on, nor anyone who had made it into an actual music box.
+The alarm sound was clearly styled to sound like a music box, but I couldn't find any historical song it was based on, nor anyone who had made it into an actual music box.
 
 Taking a digital song styled after analog technology and making it into the real thing felt right. The extra 'joy' I could bring to those who have dealt with this sound every morning was a bonus.
 
@@ -42,7 +42,7 @@ To start the project, I bought some cheap wind-up drum-style music boxes from Am
      <img src="/posts/music-box/music-box-amazon.jpg" alt="Music Box" class="w-full rounded-lg shadow-md" />
 </div>
 
-With 18 total teeth on the comb that plays the notes, I assumed that would give me enough range to fit the ringtone. After transcribing notes from one of the music boxes I had purchased, I found that not only were the notes not chromatic, some of them were duplicates.
+With 18 total teeth on the comb that plays the notes, I assumed that would give me enough range to fit the tune. After transcribing notes from one of the music boxes I had purchased, I found that not only were the notes not chromatic, some of them were duplicates.
 
 It turns out that each music box comb is custom-machined for its specific song. Material underneath each tooth is machined away so it oscillates at the right frequency when struck. The comb only contains the exact notes needed for that particular melody and when a note needs to be played in rapid succession, two teeth are tuned to the same pitch. (For a deeper dive, Engineerguy has a fantastic video on [how a wind up music box works](https://www.youtube.com/watch?v=COty6_oDEkk)).
 
@@ -50,7 +50,7 @@ I decided I wasn't going to machine my own comb, so the challenge became: could 
 
 ## 2. Analysis & Transcription
 
-Luckily it wasn't hard to find a MIDI file of the Homecoming ringtone, which gave me a list of the notes I needed to play.
+Luckily it wasn't hard to find a MIDI file of the Homecoming alarm, which gave me a list of the notes I needed to play.
 
 <div class="flex flex-col items-center gap-4 my-4">
     <img src="/posts/music-box/midi-editor.png" alt="MIDI Editor view" class="w-full rounded-lg shadow-md" />
