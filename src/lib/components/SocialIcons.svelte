@@ -15,9 +15,9 @@
         <img src="/icons/reddit.png" alt="Reddit" class="h-auto object-contain opacity-70 hover:opacity-100" />
     </a>
 
-    <a href="https://www.thingiverse.com/photonicb/designs" class="text-gray-400 hover:text-purple-300 w-5" target="_blank" rel="noopener noreferrer">
+    <!-- <a href="https://www.thingiverse.com/photonicb/designs" class="text-gray-400 hover:text-purple-300 w-5" target="_blank" rel="noopener noreferrer">
         <img src="/icons/thingiverse.png" alt="Thingiverse" class="h-auto object-contain opacity-70 hover:opacity-100" />
-    </a>
+    </a> -->
 
     <a href="/rss.xml" class="text-gray-400 hover:text-purple-300 w-5" target="_blank" rel="noopener noreferrer">
         <img src="/icons/rss.png" alt="RSS Feed" class="h-auto object-contain opacity-70 hover:opacity-100" />

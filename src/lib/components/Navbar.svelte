@@ -84,7 +84,7 @@
     </ul>
 
     <div class="hidden md:block w-64">
-      <Search />
+      <!-- <Search /> -->
     </div>
   </div>
 </nav> 

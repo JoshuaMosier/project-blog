@@ -7,7 +7,7 @@
         <div class="flex-1">
             <h1 class="text-5xl font-bold mb-8 text-purple-300">About Me</h1>
             <p class="text-lg leading-relaxed mb-6">
-                Hi there! I'm Josh Mosier, a software developer and mechanical engineering graduate who enjoys collecting skills 
+                Hi there! I'm Josh Mosier, a software developer and mechanical engineering graduate who enjoys collecting skills
                 and making stuff I think is neat.
             </p>
             <SocialIcons />
@@ -24,10 +24,9 @@
     <section class="prose prose-invert prose-lg max-w-none">
         <h2 class="text-3xl font-semibold mb-4 text-purple-200">Making & Creating</h2>
         <p class="mb-6">
-            My engineering background drives me to build across multiple disciplines. Whether I'm developing AI systems, 
-            designing custom electronics, or crafting physical objects, I enjoy the challenge of bringing ideas to life. 
-            From training machine learning models to 3D printing prototypes, or designing PCBs to casting metal parts, 
-            I'm constantly exploring the intersection of software, electronics, and physical fabrication.
+            My engineering background drives me to build across multiple disciplines. Whether I'm developing AI systems,
+            designing custom electronics, or crafting physical objects, I enjoy the challenge of bringing ideas to life.
+            I'm constantly exploring the intersection of software, electronics, and fabrication.
         </p>
 
         <!-- Skills Grid -->
@@ -35,17 +34,17 @@
             <div class="bg-gray-800/50 px-6 py-4 rounded-lg">
                 <h3 class="font-semibold text-purple-200 not-prose">Software Development</h3>
                 <ul class="list-disc list-inside text-gray-300">
-                    <li>Machine Learning & AI</li>
+                    <li>AI/ML</li>
                     <li>Python/JavaScript/C++</li>
-                    <li>Data Analysis & Visualization</li>
-                    <li>Full Stack Web Development</li>
+                    <li>Data Analysis</li>
+                    <li>Web Development</li>
                 </ul>
             </div>
             <div class="bg-gray-800/50 px-6 py-4 rounded-lg">
                 <h3 class="font-semibold text-purple-200 not-prose">Hardware & Electronics</h3>
                 <ul class="list-disc list-inside text-gray-300">
-                    <li>Embedded Systems Design</li>
-                    <li>PCB Design & Assembly</li>
+                    <li>Embedded Systems</li>
+                    <li>PCB Design</li>
                     <li>Microcontroller Programming</li>
                     <li>Sensor Integration</li>
                 </ul>
@@ -53,7 +52,7 @@
             <div class="bg-gray-800/50 px-6 py-4 rounded-lg">
                 <h3 class="font-semibold text-purple-200 not-prose">Design & Manufacturing</h3>
                 <ul class="list-disc list-inside text-gray-300">
-                    <li>CAD/CAM Design</li>
+                    <li>CAD/CAM</li>
                     <li>Additive Manufacturing</li>
                     <li>Rapid Prototyping</li>
                     <li>Digital Fabrication</li>
@@ -70,13 +69,9 @@
             </div>
         </div>
 
-
-
-        <h2 class="text-3xl font-semibold mb-4 text-purple-200">Let's Connect</h2>
         <p class="mb-6">
-            Whether you're interested in AI development, mechanical engineering, or the intersection of both, I'm always 
-            open to discussing new ideas and opportunities. Feel free to reach out at josh.r.mosier@gmail.com, 
-            connect with me on <a href="https://linkedin.com/in/joshua-mosier" class="text-purple-300 hover:text-purple-400">LinkedIn</a>,
+        Feel free to reach out at <a href="mailto:josh.r.mosier@gmail.com" class="text-purple-300 hover:text-purple-400">
+            josh.r.mosier@gmail.com</a>, connect with me on <a href="https://linkedin.com/in/joshua-mosier" class="text-purple-300 hover:text-purple-400">LinkedIn</a>,
             or view my <a href="/resume" class="text-purple-300 hover:text-purple-400">resume</a>.
         </p>
     </section>
