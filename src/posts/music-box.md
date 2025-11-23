@@ -113,7 +113,7 @@ After running through all the combinations, I found it: the "Beauty and the Beas
 
 ## 3. Design & Fabrication
 
-With the transposed MIDI file ready, I needed to generate the drum geometry. I found [MIDI to Music Box](https://huggingface.co/spaces/PashaWNN/midi_to_music_box), an openSCAD script by Pasha that generates STL files from MIDI input for this exact style of music box.
+With the transposed MIDI file ready, I was ready to start CADing the new drum. Luckily, I found [MIDI to Music Box](https://huggingface.co/spaces/PashaWNN/midi_to_music_box). Someone had already created an openSCAD script that generates STL files from MIDI input for this exact style of music box. Thanks Pasha!
 
 <div class="flex flex-col items-center w-full my-8">
     <img src="/posts/music-box/gradio.png" alt="Gradio app" class="w-full h-auto rounded-lg shadow-lg" />
