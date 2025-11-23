@@ -1,5 +1,6 @@
 ---
 title: Streamlit Runner - A Simple VS Code Extension
+description: "A VS Code extension adding a context menu option to easily run Streamlit applications."
 date: 2024-12-10
 image: ./streamlit-runner.png
 categories: ["programming"]

@@ -1,5 +1,6 @@
 ---
 title: "Magnetic Levitating Master Chief Helmet"
+description: "A 3D-printed magnetic levitating Master Chief helmet with a custom base and hand-painted details."
 date: 2022-03-25
 image: ./chief-helmet2.JPG
 categories: ["3d-printing"]

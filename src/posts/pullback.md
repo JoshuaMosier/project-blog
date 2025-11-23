@@ -1,5 +1,6 @@
 ---
 title: Building a 3D Printed Pullback Car Mechanism
+description: "A 3D-printed pullback car mechanism designed for a kinematics project, featuring a dual gear train system."
 date: 2021-05-04
 image: ./pullback.png
 categories: ["3d-printing"]

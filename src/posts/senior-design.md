@@ -1,5 +1,6 @@
 ---
 title: Senior Design - Smart Haptic Wristband for Human-Robot Interaction
+description: "A haptic wristband for human-robot interaction, providing directional feedback and squeeze notifications."
 date: 2021-09-03
 image: ./senior-design.png
 categories: ["electronics", "3d-printing"]

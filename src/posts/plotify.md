@@ -1,5 +1,6 @@
 ---
 title: "Plotify: Visualizing Your Spotify Listening Habits"
+description: "A web application for visualizing Spotify listening habits with interactive charts and data analysis."
 date: 2020-01-01
 image: ./plotify.png
 categories: ["programming"]

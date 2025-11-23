@@ -1,5 +1,6 @@
 ---
 title: "Maglev Ghost & Banshee w/ Wireless LEDs"
+description: "Magnetic levitating Halo Ghost and Banshee models with wireless LEDs and custom-painted finishes."
 date: 2021-10-01
 image: ./ghost/ghost.jpg
 categories: ["3d-printing", "electronics"]

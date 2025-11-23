@@ -1,5 +1,6 @@
 ---
 title: Wikipedia vs Wall Street - Spurious Correlations
+description: "A data visualization tool finding absurd correlations between S&P 500 stocks and Wikipedia page views."
 date: 2024-10-06
 image: ./spurious-correlations.png
 categories: ["programming"]

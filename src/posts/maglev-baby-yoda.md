@@ -1,5 +1,6 @@
 ---
 title: "Magnetic Levitating Baby Yoda Crib"
+description: "A magnetic levitating Baby Yoda in a floating pram, created with 3D printing and custom electronics."
 date: 2019-12-20
 image: ./maglev-baby-yoda.png
 categories: ["3d-printing", "electronics"]

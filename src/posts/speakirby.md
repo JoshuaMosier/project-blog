@@ -1,5 +1,6 @@
 ---
 title: "3D-Printed Kirby Speaker"
+description: "A 3D-printed SSBM-style Kirby trophy with an integrated Bluetooth speaker."
 date: 2021-12-19
 image: ./speakirby.png
 categories: ["3d-printing"]

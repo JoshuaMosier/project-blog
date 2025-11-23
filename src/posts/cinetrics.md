@@ -1,5 +1,6 @@
 ---
 title: Cinetrics - Your Personal Movie Critic Matchmaker
+description: "A web application that matches users with movie critics who share their taste, using a Python backend and React frontend."
 date: 2021-02-27
 image: ./cinetrics.png
 categories: ["programming"]

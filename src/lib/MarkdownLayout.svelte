@@ -3,6 +3,7 @@
     export let title;
     export let date;
     export let categories = [];
+    export let description = '';
 
     // Import categories from config
     import { categories as categoryConfig } from '$lib/config';
@@ -46,12 +47,17 @@
     });
 </script>
 
-<article class="prose prose-invert max-w-4xl mx-auto">
-    <header class="mb-8 p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-        <h1 class="text-4xl font-bold mb-2">{title}</h1>
-        <div class="flex justify-between items-center">
+<article class="max-w-4xl mx-auto px-4">
+    <header class="max-w-4xl mx-auto mb-12 text-center">
+        <h1 class="text-4xl md:text-4xl font-bold mb-4 leading-tight text-purple-300">{title}</h1>
+        
+        {#if description}
+            <p class="text-base text-gray-400 mb-6 leading-relaxed">{description}</p>
+        {/if}
+        
+        <div class="max-w-lg mx-auto border-b border-gray-800 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
             {#if date}
-                <time class="text-gray-400">
+                <time class="font-medium">
                     {new Date(`${date.split('T')[0]}T12:00:00Z`).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
@@ -75,7 +81,7 @@
         </div>
     </header>
     
-    <div class="markdown-content max-w-2xl mx-auto">
+    <div class="markdown-content w-full mx-auto prose prose-invert max-w-none">
         <slot />
     </div>
     
@@ -119,4 +125,4 @@
         category="General"
         categoryId="DIC_kwDOMnDwhs4ClJQd"
     /> -->
-</article> 
+</article>

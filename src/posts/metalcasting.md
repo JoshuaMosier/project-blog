@@ -1,5 +1,6 @@
 ---
 title: "Aluminum Casting Projects"
+description: "Aluminum casting projects using a Devilforge furnace to create custom medals and coins from recycled cans."
 date: 2022-02-15
 image: ./green-sand.jpg
 categories: ["3d-printing"]

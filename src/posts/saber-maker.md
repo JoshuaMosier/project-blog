@@ -1,5 +1,6 @@
 ---
 title: Saber Maker - Automated Beat Saber Map Generation
+description: "An automated tool using AI to generate custom Beat Saber maps from audio files."
 date: 2019-02-16
 image: ./saber-maker.jpg
 categories: ["programming"]

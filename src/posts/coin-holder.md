@@ -1,5 +1,6 @@
 ---
 title: "Optimized wallet-sized coin holder"
+description: "An optimized, wallet-sized 3D-printed coin holder designed to carry exact change in a credit card form factor."
 date: 2025-04-14
 image: ./coin-holder.JPG
 categories: ["3d-printing","programming"]

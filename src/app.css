@@ -129,7 +129,7 @@
   }
 
   .prose img:not(.no-lightbox) {
-    @apply mx-auto block w-[400px] max-w-full;
+    @apply mx-auto block w-[600px] max-w-full;
   }
 
   /* Lightbox specific */

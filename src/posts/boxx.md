@@ -1,5 +1,6 @@
 ---
 title: "Custom Arcade-Style SSBM Controller"
+description: "Custom arcade-style SSBM controller with a Raspberry Pi Pico, with a 3D-printed case and steel switchplate."
 date: 2023-07-21
 image: ./v2_box.jpg
 categories: ["3d-printing", "electronics"]

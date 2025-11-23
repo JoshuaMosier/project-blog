@@ -1,5 +1,6 @@
 ---
 title: Nutricient - Optimizing Dining Hall Nutrition
+description: "A web app optimizing Virginia Tech dining hall meals for nutrition using linear programming."
 date: 2021-03-28
 image: ./nutricient.png
 categories: ["programming"]

@@ -1,5 +1,6 @@
 ---
 title: On Air - Building a Smart Status Light to Stay Focused
+description: "A smart status light integrated with calendar and communication tools to reduce interruptions while working."
 date: 2020-12-21 
 image: ./on-air.png
 categories: ["programming", "electronics"]

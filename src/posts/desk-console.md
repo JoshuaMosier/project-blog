@@ -1,5 +1,6 @@
 ---
 title: "Custom 3D-Printed Desk Console"
+description: "A custom 3D-printed desk console inspired by Scott Yu-Jan's design, featuring an iPhone dock, USB hub, and audio switcher."
 date: 2025-02-24
 image: ./desk-console-main.jpg
 categories: ["3d-printing"]

@@ -1,5 +1,6 @@
 ---
 title: "Building a Movie Poster Mosaic Generator"
+description: "A Python application that generates mosaic movie posters from thousands of smaller poster thumbnails using color analysis."
 date: 2023-10-13
 image: ./movie-posters.jpg
 categories: ["programming"]

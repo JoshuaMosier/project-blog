@@ -104,6 +104,5 @@
     </section>
 
     <footer class="mt-16 mb-8 text-center text-sm text-gray-700">
-        © {new Date().getFullYear()} Josh Mosier. All rights reserved.
-    </footer>
+        © {new Date().getFullYear()} Josh Mosier.
 </div>
