@@ -6,34 +6,20 @@ image: ./desk-console-main.jpg
 categories: ["3d-printing"]
 ---
 
-<script>
-    import PostCarousel from '$lib/components/PostCarousel.svelte';
 
-    const items = [
-        { 
-            type: 'video',
-            src: "/posts/desk-console/dock-demo.MP4", 
-            alt: "v1 Controller Render" 
-        },
-        { 
-            type: 'image',
-            src: "/posts/desk-console/desk-console.jpg", 
-            alt: "Printed desk console" 
-        },
-        { 
-            type: 'image',
-            src: "/posts/desk-console/wireframe corner.png", 
-            alt: "Wireframe corner" 
-        },
-        { 
-            type: 'image',
-            src: "/posts/desk-console/wireframe rear.png", 
-            alt: "Wireframe rear" 
-        },
-    ];
-</script>
-
-<PostCarousel {items} />
+<div class="flex flex-col items-center w-full my-8">
+    <video
+        src="/posts/desk-console/dock-demo.MP4"
+        class="w-[600px] max-w-full h-auto rounded-lg shadow-lg"
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+    >
+        <track kind="captions">
+    </video>
+</div>
 
 I designed and 3D printed this custom desk console, inspired by [Scott Yu-Jan's standby mode dock](https://www.youtube.com/watch?v=L3nWw8qSYgk). The goal was to create a multi-functional hub that would help declutter my desk while accommodating my particular devices.
 

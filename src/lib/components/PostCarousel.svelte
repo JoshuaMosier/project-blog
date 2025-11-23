@@ -2,7 +2,7 @@
     import ImageCarousel from './ImageCarousel.svelte';
     
     export let items = [];
-    export let containerClass = "w-[400px] max-w-full";
+    export let containerClass = "w-[600px] max-w-full";
 
     // Mobile carousel state
     let mobileCurrentIndex = 0;
@@ -24,8 +24,11 @@
                 {#if items[0].type === 'video'}
                     <video
                         src={items[0].src}
-                        class="{containerClass} h-auto rounded-lg shadow-lg mx-auto cursor-pointer"
-                        controls
+                        class="{containerClass} h-auto rounded-lg shadow-lg mx-auto cursor-pointer pointer-events-none"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
                     >
                         <track kind="captions">
                     </video>
