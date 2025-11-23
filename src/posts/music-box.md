@@ -44,7 +44,7 @@ To start the project, I bought some cheap wind-up drum-style music boxes from Am
 
 With 18 total teeth on the comb that plays the notes, I assumed that would give me enough range to fit the ringtone. After transcribing notes from one of the music boxes I had purchased, I found that not only were the notes not chromatic, some of them were duplicates.
 
-It turns out that each music box comb is custom-machined for its specific song. Material underneath each tooth is machined away so it oscillates at the right frequency when struck. The comb only contains the exact notes needed for that particular melody and when a note needs to be played in rapid succession, two teeth are tuned to the same pitch.
+It turns out that each music box comb is custom-machined for its specific song. Material underneath each tooth is machined away so it oscillates at the right frequency when struck. The comb only contains the exact notes needed for that particular melody and when a note needs to be played in rapid succession, two teeth are tuned to the same pitch. (For a deeper dive, Engineerguy has a fantastic video on [how a wind up music box works](https://www.youtube.com/watch?v=COty6_oDEkk)).
 
 I decided I wasn't going to machine my own comb, so the challenge became: could I find an existing music box that already had all the notes I needed?
 
