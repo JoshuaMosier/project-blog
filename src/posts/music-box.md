@@ -86,7 +86,7 @@ After comparing a dozen music boxes, I hit a wall: **not a single one had all th
 
 ### The Solution
 
-Then it hit me: I was thinking about this backwards. I couldn't change the notes on the comb, but I *could* change Homecoming. By transposing the melody up or down by semitone intervals, I could shift all the notes while keeping the melody intact.
+After spending some time double checking notes I realized I was thinking about this backwards. I couldn't change the notes on the comb, but I *could* change the Homecoming midi. By transposing the melody up or down by semitone intervals, I could shift all the notes while keeping the melody more or less intact.
 
 <div class="flex flex-col items-center gap-4 my-4">
     <img src="/posts/music-box/note-analysis.png" alt="Mapping notes to comb teeth" class="w-full rounded-lg shadow-md" />
