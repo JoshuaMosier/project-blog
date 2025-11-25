@@ -3,6 +3,7 @@ title: "Laser-Cut Virginia Tech Campus Map"
 description: "A laser-cut 3D wooden map of the Virginia Tech campus, featuring multi-layered details and a custom frame."
 date: 2020-10-30
 image: ./vt-map.png
+categories: []
 ---
 
 <div class="flex flex-col items-center w-full my-8">

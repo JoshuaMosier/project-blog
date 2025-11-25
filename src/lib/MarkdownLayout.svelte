@@ -47,17 +47,20 @@
     });
 </script>
 
-<article class="max-w-4xl mx-auto px-4">
+<article class="max-w-4xl mx-auto px-4 animate-fade-in-up">
     <header class="max-w-4xl mx-auto mb-12 text-center">
-        <h1 class="text-4xl md:text-4xl font-bold mb-4 leading-tight text-purple-300">{title}</h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight font-display bg-gradient-to-r from-violet-400 to-violet-300 bg-clip-text text-transparent">{title}</h1>
         
         {#if description}
-            <p class="text-base text-gray-400 mb-6 leading-relaxed">{description}</p>
+            <p class="text-base text-slate-400 mb-6 leading-relaxed max-w-2xl mx-auto">{description}</p>
         {/if}
         
-        <div class="max-w-lg mx-auto border-b border-gray-800 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div class="max-w-lg mx-auto border-b border-bg-tertiary py-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             {#if date}
-                <time class="font-medium">
+                <time class="font-medium flex items-center gap-2">
+                    <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
                     {new Date(`${date.split('T')[0]}T12:00:00Z`).toLocaleDateString('en-US', {
                         year: 'numeric',
                         month: 'long',
@@ -71,7 +74,7 @@
                 <div class="flex gap-2">
                     {#each categories as category}
                         {#if categoryConfig[category]}
-                            <span class="px-2 py-0.5 text-xs rounded {categoryConfig[category].activeClass}">
+                            <span class="px-2.5 py-1 text-xs rounded-md {categoryConfig[category].activeClass}">
                                 {categoryConfig[category].label}
                             </span>
                         {/if}
@@ -85,19 +88,23 @@
         <slot />
     </div>
     
-    <div class="max-w-6xl mx-auto">
-        <hr class="my-16 border-gray-700" />
+    <div class="max-w-4xl mx-auto">
+        <hr class="my-16 border-bg-tertiary" />
         
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {#if nextPost}
                 <a 
                     href={nextPost.path}
-                    class="group flex items-center p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors no-underline"
+                    class="group flex items-center p-4 bg-bg-secondary rounded-xl border border-bg-tertiary hover:border-accent-teal/40 transition-all duration-300 no-underline hover:shadow-lg hover:shadow-accent-teal/5"
                 >
-                    <span class="mr-3 text-gray-400 group-hover:text-purple-300">←</span>
+                    <span class="mr-3 text-slate-500 group-hover:text-accent-teal transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </span>
                     <div class="flex flex-col">
-                        <span class="text-sm text-gray-400">Next</span>
-                        <span class="text-blue-300 group-hover:text-blue-400 line-clamp-2">{nextPost.title}</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-wider mb-1">Next</span>
+                        <span class="text-accent-teal group-hover:text-accent-teal-light transition-colors line-clamp-2 font-medium">{nextPost.title}</span>
                     </div>
                 </a>
             {:else}
@@ -107,13 +114,17 @@
             {#if previousPost}
                 <a 
                     href={previousPost.path}
-                    class="group flex items-center justify-end p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:bg-gray-800/70 transition-colors no-underline"
+                    class="group flex items-center justify-end p-4 bg-bg-secondary rounded-xl border border-bg-tertiary hover:border-violet-500/40 transition-all duration-300 no-underline hover:shadow-lg hover:shadow-violet-500/5"
                 >
                     <div class="flex flex-col items-end">
-                        <span class="text-sm text-gray-400">Previous</span>
-                        <span class="text-blue-300 group-hover:text-blue-400 line-clamp-2 text-right">{previousPost.title}</span>
+                        <span class="text-xs text-slate-500 uppercase tracking-wider mb-1">Previous</span>
+                        <span class="text-accent-teal group-hover:text-violet-400 transition-colors line-clamp-2 text-right font-medium">{previousPost.title}</span>
                     </div>
-                    <span class="ml-3 text-gray-400 group-hover:text-purple-300">→</span>
+                    <span class="ml-3 text-slate-500 group-hover:text-violet-400 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
                 </a>
             {/if}
         </div>

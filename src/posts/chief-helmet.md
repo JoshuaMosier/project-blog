@@ -11,27 +11,27 @@ categories: ["3d-printing"]
 
     const items = [
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/chief-helmet.jpg", 
             alt: "Magnetic Levitating Master Chief Helmet" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_1.jpg", 
             alt: "Uncured Helmets (Elegoo Saturn 2)" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_2.jpg", 
             alt: "Uncured Helmets (Elegoo Saturn 2)" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_3.jpg", 
             alt: "Uncured Helmets (Elegoo Saturn 2)" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_4.jpg", 
             alt: "Uncured Helmets (Elegoo Saturn 2)" 
         },
@@ -41,42 +41,42 @@ categories: ["3d-printing"]
             alt: "Test run of mag-lev base" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_5.jpg", 
             alt: "Primed Helmet with Painted Visor" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_6.jpg", 
             alt: "Airbrushed Helmet with Painted Visor" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_7.jpg", 
             alt: "Helmet Front View" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_8.jpg", 
             alt: "Helmet Side View (Pre-clear coat)" 
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_9.jpg",
             alt: "Helmet Side View (Post-clear coat)"
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_10.jpg",
             alt: "Helmet on mag-lev base"
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/process_11.jpg",
             alt: "Helmet on mag-lev base"
         },
         { 
-            type: 'image',
+            type: 'img',
             src: "/posts/chief-helmet/chief-helmet2.JPG",
             alt: "Detailed helmet shot"
         }

@@ -18,7 +18,7 @@
       const { GLTFLoader } = await import('three/examples/jsm/loaders/GLTFLoader.js');
 
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x1f2937);
+      scene.background = new THREE.Color(0x1a1f2e);
       const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       
@@ -110,4 +110,4 @@
     }
   </script>
   
-  <div bind:this={container} class="w-full aspect-square rounded-lg bg-gray-800"></div>
+  <div bind:this={container} class="w-full aspect-square rounded-xl bg-bg-secondary border border-bg-tertiary"></div>

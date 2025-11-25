@@ -24,7 +24,7 @@
                 {#if items[0].type === 'video'}
                     <video
                         src={items[0].src}
-                        class="{containerClass} h-auto rounded-lg shadow-lg mx-auto cursor-pointer pointer-events-none"
+                        class="{containerClass} h-auto rounded-xl shadow-lg mx-auto cursor-pointer pointer-events-none border border-bg-tertiary"
                         autoplay
                         muted
                         loop
@@ -36,17 +36,17 @@
                     <img 
                         src={items[0].src} 
                         alt={items[0].alt} 
-                        class="{containerClass} h-auto rounded-lg shadow-lg mx-auto cursor-pointer no-lightbox" 
+                        class="{containerClass} h-auto rounded-xl shadow-lg mx-auto cursor-pointer no-lightbox border border-bg-tertiary hover:border-violet-500/40 transition-colors" 
                     />
                 {/if}
             </ImageCarousel>
-            <p class="text-sm text-gray-400 italic mt-2 text-center">Click image above to view gallery</p>
+            <p class="text-sm text-slate-500 italic mt-3 text-center">Click image above to view gallery</p>
         </div>
 
         <!-- Mobile Carousel -->
         <div class="md:hidden w-full px-4">
             <div class="relative">
-                <div class="aspect-[4/3] w-full flex items-center justify-center bg-inherit rounded-lg overflow-hidden">
+                <div class="aspect-[4/3] w-full flex items-center justify-center bg-bg-secondary rounded-xl overflow-hidden border border-bg-tertiary">
                     {#if items[mobileCurrentIndex].type === 'video'}
                         <video
                             src={items[mobileCurrentIndex].src}
@@ -67,7 +67,7 @@
                 <!-- Navigation buttons -->
                 {#if items.length > 1}
                     <button
-                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white/70 hover:text-white p-2 rounded-full"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 bg-bg-secondary/90 text-slate-400 hover:text-violet-400 p-2 rounded-full border border-bg-tertiary transition-colors"
                         on:click={prevMobileItem}
                         aria-label="Previous image"
                     >
@@ -77,7 +77,7 @@
                     </button>
 
                     <button
-                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white/70 hover:text-white p-2 rounded-full"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 bg-bg-secondary/90 text-slate-400 hover:text-violet-400 p-2 rounded-full border border-bg-tertiary transition-colors"
                         on:click={nextMobileItem}
                         aria-label="Next image"
                     >
@@ -87,14 +87,14 @@
                     </button>
 
                     <!-- Image counter -->
-                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white/70 px-3 py-1 rounded-full text-sm">
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-bg-secondary/90 text-slate-400 px-3 py-1 rounded-full text-sm border border-bg-tertiary">
                         {mobileCurrentIndex + 1} / {items.length}
                     </div>
                 {/if}
             </div>
 
             {#if items[mobileCurrentIndex].alt}
-                <p class="text-sm text-gray-400 italic mt-2 text-center">
+                <p class="text-sm text-slate-500 italic mt-3 text-center">
                     {items[mobileCurrentIndex].alt}
                 </p>
             {/if}

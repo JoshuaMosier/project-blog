@@ -72,7 +72,7 @@
 
 {#if isOpen}
     <div 
-        class="carousel-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+        class="carousel-backdrop fixed inset-0 z-50 flex items-center justify-center bg-bg-primary/95 backdrop-blur-md"
         on:click={handleBackdropClick}
         role="presentation"
     >
@@ -89,7 +89,7 @@
                     controls
                     autoplay
                     muted
-                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain"
+                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain rounded-xl"
                 >
                     <track kind="captions">
                 </video>
@@ -97,12 +97,12 @@
                 <img 
                     src={currentItem.src} 
                     alt={currentItem.alt} 
-                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain lightbox-image no-lightbox"
+                    class="min-h-[50vh] max-h-[90vh] min-w-[50vw] max-w-[90vw] w-auto h-auto object-contain lightbox-image no-lightbox rounded-xl"
                 />
             {/if}
 
             {#if currentItem.alt}
-                <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white text-center">
+                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-bg-primary/90 to-transparent text-slate-200 text-center rounded-b-xl">
                     {currentItem.alt}
                 </div>
             {/if}
@@ -111,7 +111,7 @@
                 <!-- Navigation controls container moved up -->
                 <div class="absolute bottom-16 left-0 right-0 flex justify-center items-center gap-4">
                     <button
-                        class="text-white/70 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-3"
+                        class="text-slate-400 hover:text-violet-400 bg-bg-secondary/80 hover:bg-bg-tertiary rounded-full p-3 transition-all duration-200 border border-bg-tertiary"
                         on:click|stopPropagation={previousItem}
                         aria-label="Previous item"
                     >
@@ -121,12 +121,12 @@
                     </button>
 
                     <!-- Item counter -->
-                    <div class="bg-black/50 px-3 py-1 rounded-full text-white/70 text-sm font-mono w-[6rem] text-center">
+                    <div class="bg-bg-secondary/80 px-4 py-2 rounded-full text-slate-400 text-sm font-mono w-[6rem] text-center border border-bg-tertiary">
                         {currentIndex + 1} / {items.length}
                     </div>
 
                     <button
-                        class="text-white/70 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-3"
+                        class="text-slate-400 hover:text-violet-400 bg-bg-secondary/80 hover:bg-bg-tertiary rounded-full p-3 transition-all duration-200 border border-bg-tertiary"
                         on:click|stopPropagation={nextItem}
                         aria-label="Next item"
                     >
@@ -139,7 +139,7 @@
 
             <!-- Close button -->
             <button
-                class="absolute -top-2 -right-2 text-white/70 hover:text-white bg-black/50 hover:bg-black/70 rounded-full p-2"
+                class="absolute -top-2 -right-2 text-slate-400 hover:text-white bg-bg-secondary hover:bg-violet-500/20 rounded-full p-2 transition-all duration-200 border border-bg-tertiary hover:border-violet-500/50"
                 on:click={closeCarousel}
                 aria-label="Close carousel"
             >

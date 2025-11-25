@@ -35,12 +35,12 @@
 </script>
 
 <nav class="hidden lg:block sticky top-12 max-h-[calc(100vh-8rem)] overflow-y-auto -ml-12">
-  <h4 class="text-sm font-semibold mb-4 text-gray-400">Table of Contents</h4>
-  <ul class="space-y-2">
+  <h4 class="text-xs font-semibold mb-4 text-slate-500 uppercase tracking-wider">Contents</h4>
+  <ul class="space-y-1.5 border-l border-bg-tertiary pl-4">
     <!-- Add Top link as first element -->
     <li>
       <button 
-        class="text-sm hover:text-purple-300 transition-colors block py-1 text-gray-400 text-left w-full"
+        class="text-sm hover:text-violet-400 transition-colors block py-1 text-slate-500 text-left w-full"
         on:click={scrollToTop}
       >
         Back to top
@@ -48,10 +48,10 @@
     </li>
 
     {#each headings as heading}
-      <li style="margin-left: {(heading.level === 3 ? '1.5rem' : '0')}">
+      <li style="margin-left: {(heading.level === 3 ? '0.75rem' : '0')}">
         <a 
           href="#{heading.id}" 
-          class="text-sm hover:text-purple-300 transition-colors block py-1 text-gray-400"
+          class="text-sm hover:text-accent-teal transition-colors block py-1 text-slate-500 {heading.level === 3 ? 'text-xs' : ''}"
           on:click|preventDefault={(e) => {
             const element = document.getElementById(heading.id);
             if (element) {
