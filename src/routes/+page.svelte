@@ -188,6 +188,6 @@
     </section>
 
     <footer class="mt-20 mb-8 pt-8 border-t border-bg-tertiary text-center text-sm text-slate-600">
-        © {new Date().getFullYear()} Josh Mosier. Built with SvelteKit.
+        © {new Date().getFullYear()} Josh Mosier
     </footer>
 </div>
