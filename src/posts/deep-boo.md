@@ -61,8 +61,6 @@ This wasn't my first time doing circuit design, but it was my first time custom 
 
 ### The Computer Vision System
 
-With the hardware working, I needed to teach the robot how to play the minigames.
-
 A lot of the difficulty in developing minigame solutions was understanding the active game state - detecting which phase we were in (menu, instructions, countdown, gameplay, results) and when transitions happened. I implemented a state machine to track this, with template matching to detect each phase.
 
 While I was still finishing the hardware, I started developing the computer vision system. I'd record clips of each minigame and iterate on detection thresholds and strategies offline.
@@ -86,11 +84,11 @@ Each minigame had unique challenges:
 
 **Domination** (button mashing): Pure solenoid speed. About ~20 Hz sustained (≈190-200 presses in 10 seconds). Most people max out around 8-12 Hz.
 
-The hardest CV problem was **Thwomp the Difference**, where you identify which fruit card is different from the others in a 3x3 grid. I used HSV color histograms to profile each card, then found the outlier using chi-squared distance. It worked >95% of the time, but similar-colored fruits (red apple vs strawberry) occasionally tripped it up, and the logic got complicated depending on which round you were in.
+The hardest CV problem was **Thwomp the Difference**, a spot the difference gamewhere you identify which fruit card is different from the others. I used HSV color histograms to profile each card, then found the outlier using chi-squared distance. It worked >95% of the time, but similar fruit variants occasionally tripped it up, and the logic got complicated depending on which round you were in.
 
 ### The Puppet System
 
-Since timing between visitors would be inconsistent and people would spend varying amounts of time on practice menus, I needed manual control over initiating games and navigating menus. I used a third Joy-Con connected to my PC over Bluetooth to puppet the robot - feeding its inputs directly to the ESP32. This also meant visitors couldn't accidentally navigate to the wrong screen, since I controlled Player 1.
+Since timing between attendees would be inconsistent and people would spend varying amounts of time on practice menus, I needed manual control over initiating games and navigating menus. I used a third Joy-Con connected to my PC over Bluetooth to puppet the robot - feeding its inputs directly to the ESP32. This also meant attendees couldn't accidentally navigate to the wrong screen, since I controlled Player 1.
 
 ### System Architecture
 
@@ -119,15 +117,15 @@ For reference, here's what the final system looked like:
     <p class="text-sm text-gray-400 italic mt-1">The business end: steppers, solenoids, and linkages</p>
 </div>
 
-Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably - and fit in a carry-on Pelican case - was probably the most interdisciplinary project I've taken on.
+Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably - and fit in a carry-on Pelican case - made it one of the most interdisciplinary projects I've taken on.
 
 ## OpenSauce 2025
 
-I flew from Virginia to San Francisco the Thursday before the event. I was originally planning to bring a friend but he got sick at the last minute. Luckily, my sister was able to fill in since the booth had to be staffed full-time. (Thanks Becca)
+I flew from Virginia to San Francisco the Thursday before the event. I was originally planning to attend with a friend but he got sick at the last minute. Luckily, my sister was able to come and fill in for me so I could attend some of the shows at the event. (Thanks Becca)
 
 I had packed everything in a Pelican case, so it took me a few hours to re-assemble everything on Friday and set up the rest of the booth. Thankfully, there weren't any major issues.
 
-One unexpected adjustment I did make was to put electrical tape over the solenoid tips. The sound of them pressing buttons was **loud** in the open hall. With the tape, it was manageable but plenty noisy to surprise people and assure them they had no chance of beating the bot.
+One unexpected adjustment I did make was to put electrical tape over the solenoid tips. The sound of them hitting the buttons was **loud** in the open hall. With the tape, it was manageable but plenty noisy to surprise people and assure them they had no chance of beating the bot.
 
 ### The Booth Experience
 
@@ -138,17 +136,17 @@ My booth wasn't in the main hall, but that worked out well - there was plenty of
     <p class="text-sm text-gray-400 italic mt-1">The booth setup at OpenSauce 2025</p>
 </div>
 
-Some people didn't realize at first that they were playing against a physical robot. Since I could puppet the Joy-Con manually to navigate menus, I could demonstrate the mechanisms in real-time - moving the joystick and pressing buttons myself to show visitors what was actually happening.
+Some people didn't realize at first that they were playing against a physical robot. Since I could puppet the Joy-Con manually to navigate menus, I could demonstrate the mechanisms in real-time - moving the joystick and pressing buttons myself to show visitors what was actually happening when they were playing.
 
-A common comment: "Wouldn't it be easier to just do this in software?" My answer: it feels better to see what's actually beating you. You can watch the solenoids fire, see the joystick move. It would be a lot less satisfying to lose to a program than to a physical robot using the same controls (and I wanted an excuse to build a robot).
+A common comment: "Wouldn't it be easier to just do this in software?" My answer: it feels better to see what's actually beating you. You can watch the solenoids fire, see the joystick move. It would be a lot less satisfying to lose to a program than to a physical robot using the same controls (but mostly I just wanted an excuse to build a robot).
 
 ### The Prizes
 
-I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click. I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
+I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: [joystick fidgets](https://makerworld.com/en/models/1666446-gamecube-joystick-fidget-toy) with real potentiometer modules, and [facebutton fidgets](https://makerworld.com/en/models/1666483-gamecube-facebutton-fidget-toy) that actually click. I'd also printed around 100 [Boo figures](https://makerworld.com/en/models/1669836-multicolor-boo-keychain) as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
 
 <!-- prizes image -->
 <div class="flex flex-col items-center gap-1 my-6">
-    <img src="/posts/deep-boo/prizes.JPG" alt="Joystick and facebutton fidget prizes and 3D-printed Boo keychains" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <img src="/posts/deep-boo/prizes.png" alt="Joystick and facebutton fidget prizes and 3D-printed Boo keychains" class="w-full max-w-2xl rounded-lg shadow-md" />
 </div>
 
 The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Sled to the Edge or Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
@@ -170,7 +168,7 @@ On the second game he got 166 - by far the best human score of the whole weekend
     <iframe src="https://www.youtube.com/embed/YSEULGHKQqU?start=303" class="w-full aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-I'd made custom fidget toys in The Yard's podcast colors specifically for the possibility of this interaction. I didn't get to meet the fourth member (Slime) in person, but a few weeks later I happened to be watching his Twitch stream where he pulled out his fidget as an example of one of his favorite gifts from a fan.
+I'd made custom fidget toys in The Yard's podcast colors specifically for the possibility of this interaction. I didn't get to meet the fourth member (Slime) and give him the fidget in person, but a few weeks later I happened to be watching his Twitch stream when he showed it off as an example of one of his favorite gifts from a fan.
 
 ### Things That Worked
 
@@ -184,7 +182,7 @@ At one point my sister was waiting in line at a food truck and overheard a dad a
 
 ### Reflections
 
-If I rebuilt it today, I'd **start hardware earlier** - testing from video didn't account for real-world delays. The timing values for games like Sled to the Edge came from on-hardware testing the day before the event, something I should have done weeks earlier.
+If I rebuilt it today, I'd **start hardware earlier** - testing from video didn't account for real-world delays. The timing values for games like Sled to the Edge came from on-hardware testing a few days before the event, something I should have done much earlier.
 
 I'd also **use the joystick more**. Most games I targeted were button-focused. Games like "Camera Ready" (find the right picture by moving the joystick to pan/zoom the camera) or "Snow Brawl" (aim and throw snowballs) would have required more sophisticated real-time tracking and showcased the SPM better.
 
