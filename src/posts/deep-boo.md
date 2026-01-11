@@ -13,7 +13,7 @@ categories: ["3d-printing", "programming", "electronics"]
 
 ## The Idea
 
-When Mario Party Jamboree came out in late 2024, I watched content creators like Ludwig play the game on Twitch. There was a minigame called Cookie Cutters that was a 1v3 game where you press buttons corresponding to cookie shapes on a tray. Since I had some solenoids laying around it seemed mechanically simple enough to automate.
+When Mario Party Jamboree came out in late 2024, I watched content creators like Ludwig play the game on Twitch. There was a minigame called Cookie Cutters that was a 1v3 game where you press buttons corresponding to cookie shapes on a tray. Since I had some solenoids lying around it seemed mechanically simple enough to automate.
 
 So I spent a weekend in December building a proof of concept: 3D-printed mounts for the solenoids to press the Joy-Con buttons, basic computer vision to detect the shapes, and using a capture card to record the gameplay. Once I got it working I made a quick video and left it there.
 
@@ -34,20 +34,20 @@ Mario Party minigames were an ideal medium since they're short, self-explanatory
 
 The original prototype only needed button presses, but to play additional minigames I also needed to control the joystick. That meant building a mechanism that could move the Joy-Con stick to any (x, y) position with precision.
 
-After some research, I came across a video of a **spherical parallel manipulator (SPM)** simulation. The concept clicked immediately: a Joy-Con joystick rotates in two directions around a fixed point. If I mounted two motors with their axes pointing through the center of the joystick, I could use linkages to control each axis independently and target specific (x, y) positions based on step counts.
+After some research, I came across a [video of a **spherical parallel manipulator (SPM)** simulation](https://www.youtube.com/watch?v=I1CILK-h0UM). The concept clicked immediately: a Joy-Con joystick rotates in two directions around a fixed point. If I mounted two motors with their axes pointing through the center of the joystick, I could use linkages to control each axis independently and target specific (x, y) positions based on step counts.
 
-I initially designed around small N20 motors, but ended up with NEMA 17 stepper motors which were slightly overkill, but cheap enough to experiment with. I found a STEP file of the Joy-Cons online, which made the initial CAD straightforward, but fitting everything into a compact space while integrating bearings and bushings for smooth movement took significant iteration.
+I initially designed around small N20 motors, but ended up with NEMA 17 stepper motors. They were slightly overkill, but cheap enough to experiment with. I found a STEP file of the Joy-Cons online, which made the initial CAD straightforward, but fitting everything into a compact space while integrating bearings and bushings for smooth movement took significant iteration.
 
 <div class="flex flex-col items-center gap-1 my-6">
-    <img src="/posts/deep-boo/cad-model.png" alt="Spherical parallel manipulator CAD design" class="w-full max-w-2xl rounded-lg shadow-md" />
-    <p class="text-sm text-gray-400 italic mt-1">Actuator design in Fusion 360</p>
+    <video controls src="/posts/deep-boo/joystick.mp4" class="w-full max-w-2xl rounded-lg shadow-md"></video>
+    <p class="text-sm text-gray-400 italic mt-1">Testing the joystick mechanism actuation</p>
 </div>
 
 ### The Calibration Challenge
 
-Steppers are open-loop - they don't know where they are unless you tell them. I ended up using TMC2209 drivers because they have StallGuard, which can detect when the motor hits a physical endpoint. I added hard stops in the CAD model and then used those as reference points for homing.
+Steppers are open-loop - they don't know where they are unless you tell them. I ended up using TMC2209 drivers because they have StallGuard, which can detect when the motor hits a physical endstop. I added hard stops in the CAD model and then used those as reference points for homing.
 
-But I also needed to verify the stepper positions matched the Joy-Con's actual analog readings. So I built a calibration routine: connect the Joy-Con to my PC over Bluetooth, read its internal potentiometer values while measuring the current STEP position on the motor, and compare the two. It only worked during setup (the Joy-Con has to be connected to the Switch during gameplay), but it was enough to dial in the mapping.
+But I also needed to verify the stepper positions matched the Joy-Con's actual analog readings. So I built a calibration routine: connect the Joy-Con to my PC over Bluetooth, read its internal potentiometer values while measuring the current STEP position on the motor, and compare the two. It only worked during setup (since the Joy-Con has to be connected to the Switch via Bluetooth during gameplay, leaving the robot to just mechanically actuate the buttons), but it was enough to dial in the mapping.
 
 ### PCB Design
 
@@ -67,7 +67,14 @@ A lot of the difficulty in developing minigame solutions was understanding the a
 
 While I was still finishing the hardware, I started developing the computer vision system. I'd record clips of each minigame and iterate on detection thresholds and strategies offline.
 
-Getting the capture pipeline right took some debugging. I needed enough resolution to isolate small regions of the screen, but low enough overhead to maintain consistent 60fps for tight timing windows. At 720p, colors weren't too bad, but thresholding would be off if the capture card connected with the wrong codec. Sometimes I had to get creative and filter in both RGB and HSV colorspaces if there were multiple shades of the same color.
+Getting the capture pipeline right took some debugging. I needed enough resolution to isolate small regions of the screen, but low enough overhead to maintain consistent 60fps for tight timing windows.
+
+At 720p, colors weren't too bad, but thresholding would be off if the capture card connected with the wrong codec. Sometimes I had to get creative and filter in both RGB and HSV colorspaces if there were multiple shades of the same color.
+
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/minigames.jpg" alt="Minigame selection screen" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-1">The minigame selection menu</p>
+</div>
 
 Each minigame had unique challenges:
 
@@ -77,7 +84,7 @@ Each minigame had unique challenges:
 
 **On-Again, Off-Again** (timing sequence): This ended up being my main booth game. I extracted frame-perfect timings from the speedrun world record video by watching when the POW block at the top of the screen changed between frames and extrapolating the intervals. The first 9 button presses follow a precise pattern, then it randomizes. So I executed the speedrun sequence, then switched to random intervals for the rest of the game.
 
-**Domination** (button mashing): Pure solenoid speed. 22.22 Hz sustained for 11 seconds. Most people max out around 8-12 Hz.
+**Domination** (button mashing): Pure solenoid speed. About ~20 Hz sustained (≈190-200 presses in 10 seconds). Most people max out around 8-12 Hz.
 
 The hardest CV problem was **Thwomp the Difference**, where you identify which fruit card is different from the others in a 3x3 grid. I used HSV color histograms to profile each card, then found the outlier using chi-squared distance. It worked >95% of the time, but similar-colored fruits (red apple vs strawberry) occasionally tripped it up, and the logic got complicated depending on which round you were in.
 
@@ -88,6 +95,11 @@ Since timing between visitors would be inconsistent and people would spend varyi
 ### System Architecture
 
 For reference, here's what the final system looked like:
+
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/cad-model.png" alt="Full system CAD design" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-1">Full system design in Fusion 360</p>
+</div>
 
 **Vision Pipeline:**
 - 720p @ 60 FPS via HDMI capture card
@@ -111,7 +123,7 @@ Building Deep-Boo required working across mechanical design (the SPM linkages, b
 
 ## OpenSauce 2025
 
-I flew from Virginia to SFO on the Thursday before the event. I was originally planning to bring a friend but he got sick at the last minute. Luckily, my sister was able to fill in since the booth had to be staffed full-time. (Thanks Becca)
+I flew from Virginia to San Francisco the Thursday before the event. I was originally planning to bring a friend but he got sick at the last minute. Luckily, my sister was able to fill in since the booth had to be staffed full-time. (Thanks Becca)
 
 I had packed everything in a Pelican case, so it took me a few hours to re-assemble everything on Friday and set up the rest of the booth. Thankfully, there weren't any major issues.
 
@@ -132,11 +144,11 @@ A common comment: "Wouldn't it be easier to just do this in software?" My answer
 
 ### The Prizes
 
-I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click. I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep Boo" stickers to hand out.
+I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click (using real GameCube controller membrane pads). I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
 
 <!-- prizes image -->
 <div class="flex flex-col items-center gap-1 my-6">
-    <img src="/posts/deep-boo/prizes.JPG" alt="Prizes" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <img src="/posts/deep-boo/prizes.JPG" alt="Joystick and facebutton fidget prizes and 3D-printed Boo keychains" class="w-full max-w-2xl rounded-lg shadow-md" />
 </div>
 
 The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Sled to the Edge or Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
@@ -149,7 +161,7 @@ On Saturday, three members of The Yard podcast - Nick, Aiden, and Ludwig - stopp
 
 Ludwig is known for button mashing and used to hold the world record in Domination in a prior version of Mario Party. Having him play against the robot was the interaction I was looking forward to the most.
 
-They had seen the Mario Party screen and immediately asked to load up domination. Most people realize they have no chance the moment the solenoids start firing but Ludwig gave it his best shot and barely lost to the robot, 160-140.
+They had seen the Mario Party screen and immediately asked to load up Domination. Most people realize they have no chance the moment the solenoids start firing but Ludwig gave it his best shot and barely lost to the robot, 160 to 140 button presses in 10 seconds.
 
 On the second game he got 166 - by far the best human score of the whole weekend, but the bot ended up winning with 194.
 
@@ -164,7 +176,7 @@ I'd made custom fidget toys in The Yard's podcast colors specifically for the po
 
 The entire weekend went surprisingly well. Nothing broke. I was ready with backup parts, but I'd had to fit the whole thing in a Pelican case since I was flying in, so I was relieved when everything just... worked.
 
-The Joy-Cons used by the mechanisms were always plugged into chargers, but the three spare Joy-Cons I used for players 2/3/4 needed battery swaps on Sunday but that took only a few minutes.
+The Joy-Cons used by the mechanisms were always plugged into chargers. The three spare Joy-Cons I used for players 2/3/4 needed battery swaps on Sunday, but that took only a few minutes.
 
 I ran out of fidget toys by Sunday afternoon and started just giving away the 3D-printed Boo keychains to anyone who stuck around.
 
