@@ -144,7 +144,7 @@ A common comment: "Wouldn't it be easier to just do this in software?" My answer
 
 ### The Prizes
 
-I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click (using real GameCube controller membrane pads). I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
+I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click. I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
 
 <!-- prizes image -->
 <div class="flex flex-col items-center gap-1 my-6">
