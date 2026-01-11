@@ -191,3 +191,5 @@ And I'd **finish more minigames**. I only implemented 6 of the 10 I originally s
 I won't be able to attend OpenSauce 2026, but the platform has potential beyond Mario Party. I'd probably expand to more complex minigames or expand to other games like Mario Kart. Since I won't be exhibiting next year, I might make a video of the robot playing the notoriously difficult toy baseball game from Clubhouse Games 51.
 
 But for now, Deep-Boo accomplished what it set out to do: beat humans at Mario Party, entertain attendees, and narrowly defeat Ludwig at button mashing.
+
+The full source code and hardware design files are available on [GitHub](https://github.com/JoshuaMosier/deep-boo) for those interested in the technical implementation details.
