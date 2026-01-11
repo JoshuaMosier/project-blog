@@ -1,0 +1,183 @@
+---
+title: "Mario Party Minigame Robot (OpenSauce 2025)"
+description: "I built an autonomous robot that physically plays Nintendo Switch minigames using computer vision and hardware actuation. Then I took it to OpenSauce 2025 and challenged Ludwig to button mashing."
+date: 2025-07-21
+image: ./deep-boo-hero.jpg
+categories: ["3d-printing", "programming", "electronics"]
+---
+
+
+<div class="flex flex-col items-center">
+    <img src="/posts/deep-boo/deep-boo-hero.jpg" alt="Deep-Boo Hero Image" class="w-full max-w-2xl rounded-lg shadow-md" />
+</div>
+
+## The Idea
+
+When Mario Party Jamboree came out in late 2024, I watched content creators like Ludwig play the game on Twitch. There was a minigame called Cookie Cutters that was a 1v3 game where you press buttons corresponding to cookie shapes on a tray. Since I had some solenoids laying around it seemed mechanically simple enough to automate.
+
+So I spent a weekend in December building a proof of concept: 3D-printed mounts for the solenoids to press the Joy-Con buttons, basic computer vision to detect the shapes, and using a capture card to record the gameplay. Once I got it working I made a quick video and left it there.
+
+<!-- embedded youtube video of the proof of concept, widescreen-->
+<div class="flex flex-col items-center w-full">
+    <iframe src="https://www.youtube.com/embed/UoD5LVcxtLs" class="w-full aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+I'd been watching nearly all of the featured creators at OpenSauce for years, so when exhibitor applications opened for 2025's event, I knew I wanted to submit something. Most projects at maker fairs are showcases, but I wanted to build something where attendees could interact with the booth.
+
+I called the project **Deep-Boo** - a play on "Deep Blue" (IBM's chess-playing computer) and "Boo" (the Mario ghost). In Mario Party, Boo steals coins and stars from the players so it seemed fitting for a project about beating humans.
+
+Mario Party minigames were an ideal medium since they're short, self-explanatory, and designed to be fun. I applied with my Cookie Cutters prototype, figuring if I got accepted, I'd have the motivation to build the full system.
+
+## Building Deep-Boo
+
+### The Joystick Problem
+
+The original prototype only needed button presses, but to play additional minigames I also needed to control the joystick. That meant building a mechanism that could move the Joy-Con stick to any (x, y) position with precision.
+
+After some research, I came across a video of a **spherical parallel manipulator (SPM)** simulation. The concept clicked immediately: a Joy-Con joystick rotates in two directions around a fixed point. If I mounted two motors with their axes pointing through the center of the joystick, I could use linkages to control each axis independently and target specific (x, y) positions based on step counts.
+
+I initially designed around small N20 motors, but ended up with NEMA 17 stepper motors which were slightly overkill, but cheap enough to experiment with. I found a STEP file of the Joy-Cons online, which made the initial CAD straightforward, but fitting everything into a compact space while integrating bearings and bushings for smooth movement took significant iteration.
+
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/cad-model.png" alt="Spherical parallel manipulator CAD design" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-1">Actuator design in Fusion 360</p>
+</div>
+
+### The Calibration Challenge
+
+Steppers are open-loop - they don't know where they are unless you tell them. I ended up using TMC2209 drivers because they have StallGuard, which can detect when the motor hits a physical endpoint. I added hard stops in the CAD model and then used those as reference points for homing.
+
+But I also needed to verify the stepper positions matched the Joy-Con's actual analog readings. So I built a calibration routine: connect the Joy-Con to my PC over Bluetooth, read its internal potentiometer values while measuring the current STEP position on the motor, and compare the two. It only worked during setup (the Joy-Con has to be connected to the Switch during gameplay), but it was enough to dial in the mapping.
+
+### PCB Design
+
+This wasn't my first time doing circuit design, but it was my first time custom ordering PCBs. I was tempted to jump into KiCad but opted for Fritzing since I was mainly connecting dev boards. Debugging the UART configuration between the TMC2209 drivers and the ESP32 taught me more about hardware communication than I expected.
+
+<!-- side by side images of breadboard and pcb -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+    <img src="/posts/deep-boo/breadboard.jpg" alt="Breadboard setup" class="w-full rounded-lg shadow-md" />
+    <img src="/posts/deep-boo/pcb2.png" alt="PCB design in Fritzing" class="w-full rounded-lg shadow-md" />
+</div>
+
+### The Computer Vision System
+
+With the hardware working, I needed to teach the robot how to play the minigames.
+
+A lot of the difficulty in developing minigame solutions was understanding the active game state - detecting which phase we were in (menu, instructions, countdown, gameplay, results) and when transitions happened. I implemented a state machine to track this, with template matching to detect each phase.
+
+While I was still finishing the hardware, I started developing the computer vision system. I'd record clips of each minigame and iterate on detection thresholds and strategies offline.
+
+Getting the capture pipeline right took some debugging. I needed enough resolution to isolate small regions of the screen, but low enough overhead to maintain consistent 60fps for tight timing windows. At 720p, colors weren't too bad, but thresholding would be off if the capture card connected with the wrong codec. Sometimes I had to get creative and filter in both RGB and HSV colorspaces if there were multiple shades of the same color.
+
+Each minigame had unique challenges:
+
+**Sled to the Edge** (reaction timing): The background icebergs change every game, but the track stays the same. I cropped a narrow region of the screen and template-matched against a reference frame just before the optimal release point, then added a delay to account for game physics. The exact delay came from on-hardware testing the day before the event - something video-based development couldn't account for.
+
+**Cookie Cutters** (shape detection): Classify circles, stars, and squares in a 3x3 grid in real-time. Contour analysis worked well - circles have high circularity ratios, squares have perpendicular edges, stars have multiple sharp points.
+
+**On-Again, Off-Again** (timing sequence): This ended up being my main booth game. I extracted frame-perfect timings from the speedrun world record video by watching when the POW block at the top of the screen changed between frames and extrapolating the intervals. The first 9 button presses follow a precise pattern, then it randomizes. So I executed the speedrun sequence, then switched to random intervals for the rest of the game.
+
+**Domination** (button mashing): Pure solenoid speed. 22.22 Hz sustained for 11 seconds. Most people max out around 8-12 Hz.
+
+The hardest CV problem was **Thwomp the Difference**, where you identify which fruit card is different from the others in a 3x3 grid. I used HSV color histograms to profile each card, then found the outlier using chi-squared distance. It worked >95% of the time, but similar-colored fruits (red apple vs strawberry) occasionally tripped it up, and the logic got complicated depending on which round you were in.
+
+### The Puppet System
+
+Since timing between visitors would be inconsistent and people would spend varying amounts of time on practice menus, I needed manual control over initiating games and navigating menus. I used a third Joy-Con connected to my PC over Bluetooth to puppet the robot - feeding its inputs directly to the ESP32. This also meant visitors couldn't accidentally navigate to the wrong screen, since I controlled Player 1.
+
+### System Architecture
+
+For reference, here's what the final system looked like:
+
+**Vision Pipeline:**
+- 720p @ 60 FPS via HDMI capture card
+- OpenCV for template matching, color detection, contour analysis
+- State machine to track game phases (menu → instructions → gameplay → results)
+- Dual RGB/HSV filtering for robust color detection
+
+**Hardware:**
+- ESP32 microcontroller running firmware with priority command queue
+- TMC2209 stepper drivers with StallGuard for endpoint detection
+- TB6612FNG H-bridge drivers for solenoid control
+- Custom spherical parallel manipulator for analog joystick control
+- Bluetooth Joy-Con connection for calibration verification
+
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/hardware.JPG" alt="Close-up of the spherical parallel manipulator and solenoids" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-1">The business end: steppers, solenoids, and linkages</p>
+</div>
+
+Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably - and fit in a carry-on Pelican case - was probably the most interdisciplinary project I've taken on.
+
+## OpenSauce 2025
+
+I flew from Virginia to SFO on the Thursday before the event. I was originally planning to bring a friend but he got sick at the last minute. Luckily, my sister was able to fill in since the booth had to be staffed full-time. (Thanks Becca)
+
+I had packed everything in a Pelican case, so it took me a few hours to re-assemble everything on Friday and set up the rest of the booth. Thankfully, there weren't any major issues.
+
+One unexpected adjustment I did make was to put electrical tape over the solenoid tips. The sound of them pressing buttons was **loud** in the open hall. With the tape, it was manageable but plenty noisy to surprise people and assure them they had no chance of beating the bot.
+
+### The Booth Experience
+
+My booth wasn't in the main hall, but that worked out well - there was plenty of space for people to watch the gameplay from behind while waiting their turn. Many people were already familiar with Mario Party and if they weren't it didn't take long to learn the controls.
+
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/booth-setup.jpg" alt="DEEP-BOO booth at OpenSauce 2025" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-1">The booth setup at OpenSauce 2025</p>
+</div>
+
+Some people didn't realize at first that they were playing against a physical robot. Since I could puppet the Joy-Con manually to navigate menus, I could demonstrate the mechanisms in real-time - moving the joystick and pressing buttons myself to show visitors what was actually happening.
+
+A common comment: "Wouldn't it be easier to just do this in software?" My answer: it feels better to see what's actually beating you. You can watch the solenoids fire, see the joystick move. It would be a lot less satisfying to lose to a program than to a physical robot using the same controls (and I wanted an excuse to build a robot).
+
+### The Prizes
+
+I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: joystick fidgets with real potentiometer modules, and facebutton fidgets that actually click. I'd also printed around 100 Boo figures as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep Boo" stickers to hand out.
+
+<!-- prizes image -->
+<div class="flex flex-col items-center gap-1 my-6">
+    <img src="/posts/deep-boo/prizes.JPG" alt="Prizes" class="w-full max-w-2xl rounded-lg shadow-md" />
+</div>
+
+The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Sled to the Edge or Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
+
+My favorite interactions were kids who would play for 10 minutes, fail repeatedly, then finally get a win and excitedly pick out their prize. One family showed up on Saturday, couldn't beat it, and came back on Sunday morning specifically to try again and finally won.
+
+### Meeting Ludwig
+
+On Saturday, three members of The Yard podcast - Nick, Aiden, and Ludwig - stopped by my booth. They were featured creators at the event and I had gone to see their show earlier in the day.
+
+Ludwig is known for button mashing and used to hold the world record in Domination in a prior version of Mario Party. Having him play against the robot was the interaction I was looking forward to the most.
+
+They had seen the Mario Party screen and immediately asked to load up domination. Most people realize they have no chance the moment the solenoids start firing but Ludwig gave it his best shot and barely lost to the robot, 160-140.
+
+On the second game he got 166 - by far the best human score of the whole weekend, but the bot ended up winning with 194.
+
+<!-- ludwig playing domination video -->
+<div class="flex flex-col items-center w-full">
+    <iframe src="https://www.youtube.com/embed/YSEULGHKQqU?start=303" class="w-full aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+I'd made custom fidget toys in The Yard's podcast colors specifically for the possibility of this interaction. I didn't get to meet the fourth member (Slime) in person, but a few weeks later I happened to be watching his Twitch stream where he pulled out his fidget as an example of one of his favorite gifts from a fan.
+
+### Things That Worked
+
+The entire weekend went surprisingly well. Nothing broke. I was ready with backup parts, but I'd had to fit the whole thing in a Pelican case since I was flying in, so I was relieved when everything just... worked.
+
+The Joy-Cons used by the mechanisms were always plugged into chargers, but the three spare Joy-Cons I used for players 2/3/4 needed battery swaps on Sunday but that took only a few minutes.
+
+I ran out of fidget toys by Sunday afternoon and started just giving away the 3D-printed Boo keychains to anyone who stuck around.
+
+At one point my sister was waiting in line at a food truck and overheard a dad and son ahead of her talking about their favorite booth at the event. They happened to name mine and she ended up chatting with them about it.
+
+### Reflections
+
+If I rebuilt it today, I'd **start hardware earlier** - testing from video didn't account for real-world delays. The timing values for games like Sled to the Edge came from on-hardware testing the day before the event, something I should have done weeks earlier.
+
+I'd also **use the joystick more**. Most games I targeted were button-focused. Games like "Camera Ready" (find the right picture by moving the joystick to pan/zoom the camera) or "Snow Brawl" (aim and throw snowballs) would have required more sophisticated real-time tracking and showcased the SPM better.
+
+And I'd **finish more minigames**. I only implemented 6 of the 10 I originally scoped. It worked since most people were happy after beating the main one, but more minigames would have been a better technical demo.
+
+I won't be able to attend OpenSauce 2026, but the platform has potential beyond Mario Party. I'd probably expand to more complex minigames or expand to other games like Mario Kart. Since I won't be exhibiting next year, I might make a video of the robot playing the notoriously difficult toy baseball game from Clubhouse Games 51.
+
+But for now, Deep-Boo accomplished what it set out to do: beat humans at Mario Party, entertain attendees, and narrowly defeat Ludwig at button mashing.

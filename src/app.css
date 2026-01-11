@@ -99,7 +99,7 @@
 
   /* First paragraph */
   .prose > p:first-of-type {
-    @apply text-lg leading-relaxed text-slate-300;
+    @apply text-base leading-relaxed text-slate-300;
   }
 
   /* Code blocks */
