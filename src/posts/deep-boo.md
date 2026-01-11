@@ -1,6 +1,6 @@
 ---
 title: "Mario Party Minigame Robot (OpenSauce 2025)"
-description: "I built an autonomous robot that physically plays Nintendo Switch minigames using computer vision and hardware actuation. Then I took it to OpenSauce 2025 and challenged Ludwig to button mashing."
+description: "I built an autonomous robot that physically plays Mario Party minigames using computer vision and hardware actuation. Then I took it to OpenSauce 2025 and challenged Ludwig to button mashing."
 date: 2025-07-21
 image: ./deep-boo-hero.jpg
 categories: ["3d-printing", "programming", "electronics"]
