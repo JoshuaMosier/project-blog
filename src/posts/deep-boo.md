@@ -7,7 +7,7 @@ categories: ["3d-printing", "programming", "electronics"]
 ---
 
 
-<div class="flex flex-col items-center">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/deep-boo-hero.jpg" alt="Deep-Boo Hero Image" class="w-full max-w-2xl rounded-lg shadow-md" />
 </div>
 
@@ -18,13 +18,14 @@ When Mario Party Jamboree came out in late 2024, I watched content creators like
 So I spent a weekend in December building a proof of concept: 3D-printed mounts for the solenoids to press the Joy-Con buttons, basic computer vision to detect the shapes, and using a capture card to record the gameplay. Once I got it working I made a quick video and left it there.
 
 <!-- embedded youtube video of the proof of concept, widescreen-->
-<div class="flex flex-col items-center w-full">
-    <iframe src="https://www.youtube.com/embed/UoD5LVcxtLs" class="w-full aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="not-prose flex flex-col items-center my-6">
+    <iframe src="https://www.youtube.com/embed/eds4vgwhJgQ" class="w-full max-w-2xl aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p class="text-sm text-gray-400 italic mt-2">Proof of concept video from December 2024</p>
 </div>
 
 I'd been watching nearly all of the featured creators at OpenSauce for years, so when exhibitor applications opened for 2025's event, I knew I wanted to submit something. Most projects at maker fairs are showcases, but I wanted to build something where attendees could interact with the booth.
 
-I called the project **Deep-Boo** - a play on "Deep Blue" (IBM's chess-playing computer) and "Boo" (the Mario ghost). In Mario Party, Boo steals coins and stars from the players so it seemed fitting for a project about beating humans.
+I called the project Deep-Boo - a play on "Deep Blue" (IBM's chess-playing computer) and "Boo" (the Mario ghost). In Mario Party, Boo steals coins and stars from the players so it seemed fitting for a project about beating humans.
 
 Mario Party minigames were an ideal medium since they're short, self-explanatory, and designed to be fun. I applied with my Cookie Cutters prototype, figuring if I got accepted, I'd have the motivation to build the full system.
 
@@ -38,9 +39,9 @@ After some research, I came across a [video of a **spherical parallel manipulato
 
 I initially designed around small N20 motors, but ended up with NEMA 17 stepper motors. They were slightly overkill, but cheap enough to experiment with. I found a STEP file of the Joy-Cons online, which made the initial CAD straightforward, but fitting everything into a compact space while integrating bearings and bushings for smooth movement took significant iteration.
 
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <video controls src="/posts/deep-boo/joystick.mp4" class="w-full max-w-2xl rounded-lg shadow-md"></video>
-    <p class="text-sm text-gray-400 italic mt-1">Testing the joystick mechanism actuation</p>
+    <p class="text-sm text-gray-400 italic mt-2">Testing the joystick mechanism actuation</p>
 </div>
 
 ### The Calibration Challenge
@@ -54,9 +55,12 @@ But I also needed to verify the stepper positions matched the Joy-Con's actual a
 This wasn't my first time doing circuit design, but it was my first time custom ordering PCBs. I was tempted to jump into KiCad but opted for Fritzing since I was mainly connecting dev boards. Debugging the UART configuration between the TMC2209 drivers and the ESP32 taught me more about hardware communication than I expected.
 
 <!-- side by side images of breadboard and pcb -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
-    <img src="/posts/deep-boo/breadboard.jpg" alt="Breadboard setup" class="w-full rounded-lg shadow-md" />
-    <img src="/posts/deep-boo/pcb2.png" alt="PCB design in Fritzing" class="w-full rounded-lg shadow-md" />
+<div class="not-prose flex flex-col items-center my-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
+        <img src="/posts/deep-boo/breadboard.jpg" alt="Breadboard setup" class="w-full rounded-lg shadow-md" />
+        <img src="/posts/deep-boo/pcb2.png" alt="PCB design in Fritzing" class="w-full rounded-lg shadow-md" />
+    </div>
+    <p class="text-sm text-gray-400 italic mt-2">Left: Breadboard prototype. Right: PCB design in Fritzing</p>
 </div>
 
 ### The Computer Vision System
@@ -69,9 +73,9 @@ Getting the capture pipeline right took some debugging. I needed enough resoluti
 
 At 720p, colors weren't too bad, but thresholding would be off if the capture card connected with the wrong codec. Sometimes I had to get creative and filter in both RGB and HSV colorspaces if there were multiple shades of the same color.
 
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/minigames.jpg" alt="Minigame selection screen" class="w-full max-w-2xl rounded-lg shadow-md" />
-    <p class="text-sm text-gray-400 italic mt-1">The minigame selection menu</p>
+    <p class="text-sm text-gray-400 italic mt-2">The minigame selection menu</p>
 </div>
 
 Each minigame had unique challenges:
@@ -94,9 +98,9 @@ Since timing between attendees would be inconsistent and people would spend vary
 
 For reference, here's what the final system looked like:
 
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/cad-model.png" alt="Full system CAD design" class="w-full max-w-2xl rounded-lg shadow-md" />
-    <p class="text-sm text-gray-400 italic mt-1">Full system design in Fusion 360</p>
+    <p class="text-sm text-gray-400 italic mt-2">Full system design in Fusion 360</p>
 </div>
 
 **Vision Pipeline:**
@@ -112,9 +116,9 @@ For reference, here's what the final system looked like:
 - Custom spherical parallel manipulator for analog joystick control
 - Bluetooth Joy-Con connection for calibration verification
 
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/hardware.JPG" alt="Close-up of the spherical parallel manipulator and solenoids" class="w-full max-w-2xl rounded-lg shadow-md" />
-    <p class="text-sm text-gray-400 italic mt-1">The business end: steppers, solenoids, and linkages</p>
+    <p class="text-sm text-gray-400 italic mt-2">The business end: steppers, solenoids, and linkages</p>
 </div>
 
 Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably - and fit in a carry-on Pelican case - made it one of the most interdisciplinary projects I've taken on.
@@ -131,9 +135,9 @@ One unexpected adjustment I did make was to put electrical tape over the solenoi
 
 My booth wasn't in the main hall, but that worked out well - there was plenty of space for people to watch the gameplay from behind while waiting their turn. Many people were already familiar with Mario Party and if they weren't it didn't take long to learn the controls.
 
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/booth-setup.jpg" alt="DEEP-BOO booth at OpenSauce 2025" class="w-full max-w-2xl rounded-lg shadow-md" />
-    <p class="text-sm text-gray-400 italic mt-1">The booth setup at OpenSauce 2025</p>
+    <p class="text-sm text-gray-400 italic mt-2">The booth setup at OpenSauce 2025</p>
 </div>
 
 Some people didn't realize at first that they were playing against a physical robot. Since I could puppet the Joy-Con manually to navigate menus, I could demonstrate the mechanisms in real-time - moving the joystick and pressing buttons myself to show visitors what was actually happening when they were playing.
@@ -145,8 +149,9 @@ A common comment: "Wouldn't it be easier to just do this in software?" My answer
 I'd designed custom prizes for people who could beat the bot. From previous GameCube controller modding, I had a lot of spare parts, so I made fidget toys based on the Nintendo gachapon toys: [joystick fidgets](https://makerworld.com/en/models/1666446-gamecube-joystick-fidget-toy) with real potentiometer modules, and [facebutton fidgets](https://makerworld.com/en/models/1666483-gamecube-facebutton-fidget-toy) that actually click. I'd also printed around 100 [Boo figures](https://makerworld.com/en/models/1669836-multicolor-boo-keychain) as keychains using multicolor filament. For people who couldn't beat the bot, my sister helped me make a few hundred "Deep-Boo" stickers to hand out.
 
 <!-- prizes image -->
-<div class="flex flex-col items-center gap-1 my-6">
+<div class="not-prose flex flex-col items-center my-6">
     <img src="/posts/deep-boo/prizes.png" alt="Joystick and facebutton fidget prizes and 3D-printed Boo keychains" class="w-full max-w-2xl rounded-lg shadow-md" />
+    <p class="text-sm text-gray-400 italic mt-2">Joystick and facebutton fidget prizes and 3D-printed Boo keychains</p>
 </div>
 
 The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Sled to the Edge or Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
@@ -164,8 +169,9 @@ They had seen the Mario Party screen and immediately asked to load up Domination
 On the second game he got 166 - by far the best human score of the whole weekend, but the bot ended up winning with 194.
 
 <!-- ludwig playing domination video -->
-<div class="flex flex-col items-center w-full">
-    <iframe src="https://www.youtube.com/embed/YSEULGHKQqU?start=303" class="w-full aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="not-prose flex flex-col items-center my-6">
+    <iframe src="https://www.youtube.com/embed/YSEULGHKQqU?start=303" class="w-full max-w-2xl aspect-video rounded-lg shadow-md" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p class="text-sm text-gray-400 italic mt-2">Ludwig and The Yard playing Domination against Deep-Boo</p>
 </div>
 
 I'd made custom fidget toys in The Yard's podcast colors specifically for the possibility of this interaction. I didn't get to meet the fourth member (Slime) and give him the fidget in person, but a few weeks later I happened to be watching his Twitch stream when he showed it off as an example of one of his favorite gifts from a fan.
