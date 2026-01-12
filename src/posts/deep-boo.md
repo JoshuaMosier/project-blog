@@ -159,7 +159,7 @@ I'd designed custom prizes for people who could beat the bot. From previous Game
     <p class="text-sm text-gray-400 italic mt-2">Joystick and facebutton fidget prizes and 3D-printed Boo keychains</p>
 </div>
 
-The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Sled to the Edge or Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
+The win rate on On-Again, Off-Again was about 5% - hard enough that I didn't give away all the prizes on day one, but easy enough that winning felt possible. Most other games like Domination were basically impossible to win, but people would try them after beating the main game just to see what else the robot could do.
 
 My favorite interactions were kids who would play for 10 minutes, fail repeatedly, then finally get a win and excitedly pick out their prize. One family showed up on Saturday, couldn't beat it, and came back on Sunday morning specifically to try again and finally won.
 
@@ -169,9 +169,7 @@ On Saturday, three members of The Yard podcast - Nick, Aiden, and Ludwig - stopp
 
 Ludwig is known for button mashing and used to hold the world record in Domination in a prior version of Mario Party. Having him play against the robot was the interaction I was looking forward to the most.
 
-They had seen the Mario Party screen and immediately asked to load up Domination. Most people realize they have no chance the moment the solenoids start firing but Ludwig gave it his best shot and barely lost to the robot, 160 to 140 button presses in 10 seconds.
-
-On the second game he got 166 - by far the best human score of the whole weekend, but the bot ended up winning with 194.
+They had seen the Mario Party screen and immediately asked to load up Domination. Most people realize they have no chance the moment the solenoids start firing but Ludwig gave it his best shot. In the first round, the robot won 160 to 140. In the second round, Ludwig pushed to 166 presses - by far the best human score of the whole weekend - but due to variance the bot still took it with 194.
 
 <!-- ludwig playing domination video -->
 <div class="not-prose flex flex-col items-center my-6">
