@@ -58,9 +58,9 @@ This wasn't my first time doing circuit design, but it was my first time custom 
 <div class="not-prose flex flex-col items-center my-6">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl">
         <img src="/posts/deep-boo/breadboard.jpg" alt="Breadboard setup" class="w-full rounded-lg shadow-md" />
-        <img src="/posts/deep-boo/pcb2.png" alt="PCB design in Fritzing" class="w-full rounded-lg shadow-md" />
+        <img src="/posts/deep-boo/electronics.jpg" alt="Final PCB" class="w-full rounded-lg shadow-md" />
     </div>
-    <p class="text-sm text-gray-400 italic mt-2">Left: Breadboard prototype. Right: PCB design in Fritzing</p>
+    <p class="text-sm text-gray-400 italic mt-2">Left: Breadboard prototype. Right: Final PCB</p>
 </div>
 
 ### The Computer Vision System
@@ -82,17 +82,22 @@ Each minigame had unique challenges:
 
 **Sled to the Edge** (reaction timing): The background icebergs change every game, but the track stays the same. I cropped a narrow region of the screen and template-matched against a reference frame just before the optimal release point, then added a delay to account for game physics. The exact delay came from on-hardware testing the day before the event - something video-based development couldn't account for.
 
-**Cookie Cutters** (shape detection): Classify circles, stars, and squares in a 3x3 grid in real-time. Contour analysis worked well - circles have high circularity ratios, squares have perpendicular edges, stars have multiple sharp points.
+**Cookie Cutters** (shape detection): Classify circles, stars, and squares in a 3x3 grid in real-time. I used reference image comparison - comparing each grid cell against pre-captured templates and picking the shape with the lowest pixel difference.
 
 **On-Again, Off-Again** (timing sequence): This ended up being my main booth game. I extracted frame-perfect timings from the speedrun world record video by watching when the POW block at the top of the screen changed between frames and extrapolating the intervals. The first 9 button presses follow a precise pattern, then it randomizes. So I executed the speedrun sequence, then switched to random intervals for the rest of the game.
 
 **Domination** (button mashing): Pure solenoid speed. About ~20 Hz sustained (≈190-200 presses in 10 seconds). Most people max out around 8-12 Hz.
 
-The hardest CV problem was **Thwomp the Difference**, a spot the difference gamewhere you identify which fruit card is different from the others. I used HSV color histograms to profile each card, then found the outlier using chi-squared distance. It worked >95% of the time, but similar fruit variants occasionally tripped it up, and the logic got complicated depending on which round you were in.
+The hardest CV problem was **Thwomp the Difference**, a spot-the-difference game where you identify which fruit card is different from the others. I used HSV hue thresholding to identify fruit types, then template matching to distinguish between subtle variations (like tall vs short grape bunches). Most of the difficulty was implementing the logic since in later rounds there are additional cards and possible fruit variations. I'd estimate it to have about a 50ms reaction time between the the card reveal and registering the button press, but that didn't stop people from believing they could beat it.
 
 ### The Puppet System
 
 Since timing between attendees would be inconsistent and people would spend varying amounts of time on practice menus, I needed manual control over initiating games and navigating menus. I used a third Joy-Con connected to my PC over Bluetooth to puppet the robot - feeding its inputs directly to the ESP32. This also meant attendees couldn't accidentally navigate to the wrong screen, since I controlled Player 1.
+
+<div class="not-prose flex flex-col items-center my-6">
+    <video controls src="/posts/deep-boo/puppet.mp4" class="w-full max-w-2xl rounded-lg shadow-md"></video>
+    <p class="text-sm text-gray-400 italic mt-2">Real-time mirroring of Joy-Con inputs</p>
+</div>
 
 ### System Architecture
 
