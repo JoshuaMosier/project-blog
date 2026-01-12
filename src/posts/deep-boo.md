@@ -27,7 +27,7 @@ I'd been watching nearly all of the featured creators at OpenSauce for years, so
 
 I called the project Deep-Boo - a play on "Deep Blue" (IBM's chess-playing computer) and "Boo" (the Mario ghost). In Mario Party, Boo steals coins and stars from the players so it seemed fitting for a project about beating humans.
 
-Mario Party minigames were an ideal medium since they're short, self-explanatory, and designed to be fun. I applied with my Cookie Cutters prototype, figuring if I got accepted, I'd have the motivation to build the full system.
+Mario Party minigames were an ideal medium since they're short, self-explanatory, and designed to be fun. I went through all 110+ minigames in Mario Party Jamboree and categorized them by feasibility - some were pure button mashing, some required complex CV, some were completely RNG based, and some required motion controls I couldn't automate. I applied with my Cookie Cutters prototype, figuring if I got accepted, I'd have the motivation to build the full system.
 
 ## Building Deep-Boo
 
@@ -80,7 +80,7 @@ At 720p, colors weren't too bad, but thresholding would be off if the capture ca
 
 Each minigame had unique challenges:
 
-**Sled to the Edge** (reaction timing): The background icebergs change every game, but the track stays the same. I cropped a narrow region of the screen and template-matched against a reference frame just before the optimal release point, then added a delay to account for game physics. The exact delay came from on-hardware testing the day before the event - something video-based development couldn't account for.
+**Unfriendly Flying Object** (joystick + timing): A 1v3 minigame where the solo player controls a spaceship and drops spike platforms to crush opponents below. The robot used the joystick to track player positions and timed button presses to drop platforms. This was one of the better showcases for the spherical parallel manipulator since most other games were button-focused.
 
 **Cookie Cutters** (shape detection): Classify circles, stars, and squares in a 3x3 grid in real-time. I used reference image comparison - comparing each grid cell against pre-captured templates and picking the shape with the lowest pixel difference.
 
@@ -88,7 +88,7 @@ Each minigame had unique challenges:
 
 **Domination** (button mashing): Pure solenoid speed. About ~20 Hz sustained (≈190-200 presses in 10 seconds). Most people max out around 8-12 Hz.
 
-The hardest CV problem was **Thwomp the Difference**, a spot-the-difference game where you identify which fruit card is different from the others. I used HSV hue thresholding to identify fruit types, then template matching to distinguish between subtle variations (like tall vs short grape bunches). Most of the difficulty was implementing the logic since in later rounds there are additional cards and possible fruit variations. I'd estimate it to have about a 50ms reaction time between the the card reveal and registering the button press, but that didn't stop people from believing they could beat it.
+The hardest CV problem was **Thwomp the Difference**, a spot-the-difference game where you identify which fruit card is different from the others. I used HSV hue thresholding to identify fruit types, then template matching to distinguish between subtle variations (like tall vs short grape bunches). Most of the difficulty was implementing the logic since in later rounds there are additional cards and possible fruit variations. I'd estimate it had about a 50ms reaction time between the card reveal and registering the button press, but that didn't stop people from believing they could beat it.
 
 ### The Puppet System
 
