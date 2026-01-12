@@ -126,7 +126,7 @@ For reference, here's what the final system looked like:
     <p class="text-sm text-gray-400 italic mt-2">The business end: steppers, solenoids, and linkages</p>
 </div>
 
-Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably - and fit in a carry-on Pelican case - made it one of the most interdisciplinary projects I've taken on.
+Building Deep-Boo required working across mechanical design (the SPM linkages, bearings, and 3D-printed housings), electrical engineering (PCB layout, stepper drivers, solenoid control), embedded firmware (ESP32 timing and communication protocols), and computer vision (real-time game state detection). Getting all of these systems to work together reliably made it one of the most interdisciplinary projects I've taken on.
 
 ## OpenSauce 2025
 
@@ -181,7 +181,7 @@ I'd made custom fidget toys in The Yard's podcast colors specifically for the po
 
 ### Things That Worked
 
-The entire weekend went surprisingly well. Nothing broke. I was ready with backup parts, but I'd had to fit the whole thing in a Pelican case since I was flying in, so I was relieved when everything just... worked.
+The entire weekend went surprisingly well. Nothing broke. I had backup parts for most of the small components, but I was relieved when everything just... worked.
 
 The Joy-Cons used by the mechanisms were always plugged into chargers. The three spare Joy-Cons I used for players 2/3/4 needed battery swaps on Sunday, but that took only a few minutes.
 
