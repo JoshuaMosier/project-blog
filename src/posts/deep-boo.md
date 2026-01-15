@@ -197,7 +197,7 @@ I'd also **use the joystick more**. Most games I targeted were button-focused. G
 
 And I'd **finish more minigames**. I only implemented 6 of the 10 I originally scoped. It worked since most people were happy after beating the main one, but more minigames would have been a better technical demo.
 
-I won't be able to attend OpenSauce 2026, but the platform has potential beyond Mario Party. I'd probably expand to more complex minigames or expand to other games like Mario Kart. Since I won't be exhibiting next year, I might make a video of the robot playing the notoriously difficult toy baseball game from Clubhouse Games 51.
+I won't be able to attend OpenSauce 2026 (no thanks Becca), but the platform has potential beyond Mario Party. I'd probably expand to more complex minigames or expand to other games like Mario Kart. Since I won't be exhibiting next year, I might make a video of the robot playing the notoriously difficult toy baseball game from Clubhouse Games 51.
 
 But for now, Deep-Boo accomplished what it set out to do: beat humans at Mario Party, entertain attendees, and narrowly defeat Ludwig at button mashing.
 
